@@ -1,0 +1,25 @@
+:root {
+  --color-primary: #d60176;
+
+  --color-background: #f8f9fc;
+  --color-background-secondary: #eef1f6;
+
+  --color-foreground: #0f1017;
+  --color-foreground-muted: #4b4e5c;
+
+  --color-muted: #e4e7f0;
+  --color-border: #d3d7e3;
+}
+
+.dark {
+  --color-primary: #d60176;
+
+  --color-background: #0b0c12;
+  --color-background-secondary: #141621;
+
+  --color-foreground: #f5f6fb;
+  --color-foreground-muted: #c2c6d6;
+
+  --color-muted: #1a1c28;
+  --color-border: #1f202d;
+}
