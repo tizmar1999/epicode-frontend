@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "format": "ultracite",
+    "format:check": "ultracite --check"
   },
   "dependencies": {
     "@workspace/ui": "workspace:*",
