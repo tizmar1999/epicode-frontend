@@ -1,0 +1,29 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  darkMode: "class",
+  content: [
+    "../../apps/web/**/*.{ts,tsx}",
+    "../../apps/storybook/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {DEFAULT: "var(--color-primary)",},
+        background: {
+          DEFAULT: "var(--color-background)",
+          secondary: "var(--color-background-secondary)",
+        },
+        "background-secondary": "var(--color-background-secondary)",
+        foreground: "var(--color-foreground)",
+        "foreground-muted": "var(--color-foreground-muted)",
+        border: "var(--color-border)",
+        muted: "var(--color-muted)",
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;
