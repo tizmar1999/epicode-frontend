@@ -55,8 +55,11 @@ function DsButton({
       {...props}
     >
       {leftIcon && <span className="inline-flex items-center">{leftIcon}</span>}
-      {isLoading && (<span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />)}
-      <span className="inline-flex items-center">{children}</span>
+      {isLoading ? (
+        <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+      ) : (
+        <span className="inline-flex items-center">{children}</span>
+      )}
       {rightIcon && (
         <span className="inline-flex items-center">{rightIcon}</span>
       )}
