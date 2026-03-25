@@ -5,5 +5,21 @@
   "private": true,
   "exports": {
     "./globals.css": "./src/styles/globals.css"
+  },
+  "dependencies": {
+    "@workspace/ui": "*",
+    "class-variance-authority": "^0.7.1"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3",
+    "@workspace/typescript-config": "workspace:*"
   }
 }

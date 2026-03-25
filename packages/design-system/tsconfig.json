@@ -1,0 +1,12 @@
+{
+  "extends": "@workspace/typescript-config/react-library.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "paths": {
+      "@workspace/design-system/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*", "tailwind.config.ts"],
+  "exclude": ["node_modules", "dist"]
+}
