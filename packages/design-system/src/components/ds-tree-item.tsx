@@ -1,0 +1,43 @@
+import * as React from "react"
+import { cn } from "@workspace/ui/lib/utils"
+
+type DsTreeItemProps = {
+  label: string
+  level?: number
+  isActive?: boolean
+  onClick?: () => void
+  rightSlot?: React.ReactNode
+  children?: React.ReactNode
+}
+
+export function DsTreeItem({
+  label,
+  level = 0,
+  isActive = false,
+  onClick,
+  rightSlot,
+  children,
+}: DsTreeItemProps) {
+  const isClickable = Boolean(onClick)
+
+  return (
+    <div className="flex flex-col">
+      <button
+        type="button"
+        onClick={onClick}
+        style={{ paddingLeft: `${level * 12}px` }}
+        className={cn(
+          "flex w-full items-center justify-between px-2 py-1 rounded-md text-left transition-colors",
+          isActive
+            ? "bg-primary/10 text-primary font-medium"
+            : isClickable && "hover:bg-muted cursor-pointer"
+        )}
+      >
+        <span className="truncate">{label}</span>
+        {rightSlot}
+      </button>
+
+      {children ? <div className="mt-1">{children}</div> : null}
+    </div>
+  )
+}
