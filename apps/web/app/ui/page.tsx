@@ -1,3 +1,4 @@
+import DsBadge from "@workspace/design-system/components/ds-badge"
 import DsButton from "@workspace/design-system/components/ds-button"
 import DsCard from "@workspace/design-system/components/ds-card"
 import DsInput from "@workspace/design-system/components/ds-input"
@@ -55,6 +56,18 @@ export default function UiPreviewPage() {
         <h2 className="text-lg font-semibold">Progress</h2>
         <DsProgress label="Course completion" value={68} />
       </section>
+
+      <section className="flex flex-col gap-3 max-w-xl">
+        <h2 className="text-lg font-semibold">Badge</h2>
+        <div className="flex flex-wrap gap-3">
+          <DsBadge variant="default">Default</DsBadge>
+          <DsBadge variant="completed">Completed</DsBadge>
+          <DsBadge variant="default">In Progress</DsBadge>
+          <DsBadge variant="default">Locked</DsBadge>
+          <DsBadge variant="default">New</DsBadge>
+        </div>
+      </section>
+
     </main>
   )
 }
