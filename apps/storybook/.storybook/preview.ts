@@ -1,11 +1,9 @@
 import "@workspace/design-system/globals.css"
+import type { Preview } from "@storybook/react"
 
-const preview = {
+const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
-    docs: {
-      autodocs: true,
-    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

@@ -5,7 +5,7 @@ import { cn } from "@workspace/ui/lib/utils"
 /**
  * Props for DsChatBubble component.
  */
-type DsChatBubbleProps = {
+export type DsChatBubbleProps = {
   /** Choose the alignment and color scheme */
   variant: "user" | "assistant"
   /** Message content */

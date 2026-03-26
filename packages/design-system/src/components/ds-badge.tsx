@@ -23,7 +23,10 @@ const dsBadgeVariants = cva(
   }
 )
 
-type DsBadgeProps = React.ComponentProps<typeof UiBadge> &
+/**
+ * Props for DsBadge component.
+ */
+export type DsBadgeProps = React.HTMLAttributes<HTMLSpanElement> &
   VariantProps<typeof dsBadgeVariants>
 
 /**

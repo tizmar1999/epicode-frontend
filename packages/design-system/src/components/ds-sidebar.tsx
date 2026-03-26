@@ -6,7 +6,7 @@ import DsBadge from "./ds-badge"
 import { DsTreeItem } from "./ds-tree-item"
 
 /** Lesson node definition used by DsSidebar */
-type Lesson = {
+export type DsSidebarLesson = {
   /** Unique identifier for the lesson */
   id: string
   /** Lesson title */
@@ -16,42 +16,42 @@ type Lesson = {
 }
 
 /** Group of lessons within a section */
-type LessonGroup = {
+export type DsSidebarLessonGroup = {
   /** Unique identifier for the group */
   id: string
   /** Group title (e.g., Video, Teoria) */
   title: string
   /** Lessons contained in this group */
-  lessons: Lesson[]
+  lessons: DsSidebarLesson[]
 }
 
 /** Section inside a module containing lesson groups */
-type Section = {
+export type DsSidebarSection = {
   /** Unique identifier for the section */
   id: string
   /** Section title */
   title: string
   /** Groups within the section */
-  groups: LessonGroup[]
+  groups: DsSidebarLessonGroup[]
 }
 
 /** Module grouping sections */
-type Module = {
+export type DsSidebarModule = {
   /** Unique identifier for the module */
   id: string
   /** Module title */
   title: string
   /** Sections within the module */
-  sections: Section[]
+  sections: DsSidebarSection[]
 }
 
 /**
  * Props for DsSidebar component.
  * Sidebar navigation component for rendering course/module/lesson hierarchy.
  */
-type DsSidebarProps = {
+export type DsSidebarProps = {
   /** Modules to render in the sidebar */
-  modules: Module[]
+  modules: DsSidebarModule[]
   /** Currently selected lesson id */
   selectedLessonId: string | null
   /** Callback when a lesson is selected */

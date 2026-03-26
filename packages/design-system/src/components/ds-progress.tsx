@@ -6,7 +6,7 @@ import { cn } from "@workspace/ui/lib/utils"
 /**
  * Props for DsProgress component.
  */
-type DsProgressProps = {
+export type DsProgressProps = {
   /** Progress value from 0 to 100 */
   value: number
   /** Optional label displayed above the bar */

@@ -3,7 +3,10 @@ import * as React from "react"
 import { cn } from "@workspace/ui/lib/utils"
 import DsButton from "./ds-button"
 
-type DsChatInputProps = {
+/**
+ * Props for DsChatInput component.
+ */
+export type DsChatInputProps = {
   /** Placeholder text for the textarea */
   placeholder?: string
   /** Callback fired when sending a non-empty value */

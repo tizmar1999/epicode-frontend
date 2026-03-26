@@ -6,18 +6,19 @@ import {
   CardContent,
   CardFooter as UiCardFooter,
   CardHeader as UiCardHeader,
-  CardTitle as UiCardTitle,
-  CardDescription as UiCardDescription,
 } from "@workspace/ui/components/card"
 import { cn } from "@workspace/ui/lib/utils"
 
+/**
+ * Variants for DsCard styling.
+ */
 const cardVariants = cva(
-  "bg-background-secondary border border-border rounded-xl text-foreground",
+  "bg-background-secondary border border-border rounded-xl p-5 text-foreground",
   {
     variants: {
       variant: {
         default: "",
-        elevated: "shadow-lg shadow-md",
+        elevated: "shadow-lg shadow-black/10",
       },
     },
     defaultVariants: {
@@ -27,21 +28,31 @@ const cardVariants = cva(
 )
 
 /**
- * Props for DsCard component.
+ * Props for DsCard component
  */
-type DsCardProps = React.ComponentProps<typeof UiCard> &
-  VariantProps<typeof cardVariants> & {
-    /** Optional header content */
-    header?: React.ReactNode
-    /** Optional footer content */
-    footer?: React.ReactNode
-  }
+export type DsCardProps = {
+  /** Optional header content displayed at the top */
+  header?: React.ReactNode
+
+  /** Optional footer content displayed at the bottom */
+  footer?: React.ReactNode
+
+  /** Main content of the card */
+  children?: React.ReactNode
+
+  /** Visual variant of the card */
+  variant?: "default" | "elevated"
+
+  /** Additional CSS classes */
+  className?: string
+} & React.HTMLAttributes<HTMLDivElement>
 
 /**
- * Container component for grouping content with optional header and footer.
- * Use for wrapping course content, stats, or cards in the LMS UI.
+ * Container component used to group related content.
+ *
+ * Supports optional header and footer sections and a visual "elevated" variant.
  */
-function DsCard({
+export function DsCard({
   className,
   children,
   header,
@@ -50,7 +61,10 @@ function DsCard({
   ...props
 }: DsCardProps) {
   return (
-    <UiCard className={cn(cardVariants({ variant }), className)} {...props}>
+    <UiCard
+      className={cn(cardVariants({ variant }), className)}
+      {...props}
+    >
       {header ? <UiCardHeader>{header}</UiCardHeader> : null}
       <CardContent>{children}</CardContent>
       {footer ? <UiCardFooter>{footer}</UiCardFooter> : null}
@@ -59,8 +73,3 @@ function DsCard({
 }
 
 export default DsCard
-export const DsCardHeader = UiCardHeader
-export const DsCardFooter = UiCardFooter
-export const DsCardTitle = UiCardTitle
-export const DsCardDescription = UiCardDescription
-export const DsCardContent = CardContent

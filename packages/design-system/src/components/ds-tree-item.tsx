@@ -4,7 +4,7 @@ import { cn } from "@workspace/ui/lib/utils"
 /**
  * Props for DsTreeItem component.
  */
-type DsTreeItemProps = {
+export type DsTreeItemProps = {
   /** Display label for the tree node */
   label: string
   /** Nesting level used for indentation */

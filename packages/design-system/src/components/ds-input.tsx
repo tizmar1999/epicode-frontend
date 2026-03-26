@@ -6,7 +6,7 @@ import { cn } from "@workspace/ui/lib/utils"
  * Props for DsInput component.
  * Form input with label, helper text, and error state.
  */
-type DsInputProps = React.ComponentProps<typeof UiInput> & {
+export type DsInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   /** Optional label displayed above the input */
   label?: string
   /** Helper text shown below the input */

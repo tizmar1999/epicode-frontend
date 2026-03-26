@@ -3,7 +3,9 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "emitDecoratorMetadata": false,
+    "esModuleInterop": true
   },
-  "include": [".storybook/**/*", "src/**/*"]
+  "include": [".storybook/**/*", "src/**/*", "../../packages/design-system/src/**/*"]
 }
