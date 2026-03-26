@@ -1,7 +1,11 @@
-import DsButton from "@workspace/design-system/components/ds-button"
-import DsInput from "@workspace/design-system/components/ds-input"
+import DsChatBubble from "@workspace/design-system/components/ds-chat-bubble"
+import DsChatInput from "@workspace/design-system/components/ds-chat-input"
 
 export function ChatPanel() {
+  function handleSend(val: string) {
+    console.log("Send message:", val)
+  }
+
   return (
     <div className="flex h-full flex-col">
       <div className="flex items-center justify-between border-b border-border px-4 py-3">
@@ -10,21 +14,14 @@ export function ChatPanel() {
       </div>
 
       <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3">
-        <div className="flex justify-end">
-          <div className="bg-primary text-white px-4 py-2.5 rounded-xl max-w-[70%]">
-            How do I approach this lesson?
-          </div>
-        </div>
-        <div className="flex justify-start">
-          <div className="bg-muted text-foreground px-4 py-2.5 rounded-xl max-w-[70%]">
-            Start by reviewing the video and then try the quiz.
-          </div>
-        </div>
+        <DsChatBubble variant="user">How do I approach this lesson?</DsChatBubble>
+        <DsChatBubble variant="assistant">
+          Start by reviewing the video and then try the quiz.
+        </DsChatBubble>
       </div>
 
       <div className="border-t border-border px-4 py-3">
-        <DsInput placeholder="Leave a comment..." />
-        <DsButton className="w-full mt-2 h-11">Send</DsButton>
+        <DsChatInput placeholder="Leave a comment..." onSend={handleSend} />
       </div>
     </div>
   )
