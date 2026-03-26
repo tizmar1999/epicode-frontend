@@ -1,36 +1,38 @@
-import { fireEvent, render, screen } from "@testing-library/react"
-import React from "react"
+import { render, screen, fireEvent } from "@testing-library/react"
+import { describe, it, expect, vi } from "vitest"
 
 import DsButton from "./ds-button"
 
 describe("DsButton", () => {
-  it("renders correctly and shows children", () => {
+  it("renders children correctly", () => {
     render(<DsButton>Click me</DsButton>)
+
     expect(screen.getByText("Click me")).toBeInTheDocument()
   })
 
-  it("handles click events", () => {
+  it("calls onClick when clicked", () => {
     const handleClick = vi.fn()
+
     render(<DsButton onClick={handleClick}>Click</DsButton>)
+
     fireEvent.click(screen.getByText("Click"))
+
     expect(handleClick).toHaveBeenCalledTimes(1)
   })
 
-  it("shows loading state", () => {
-    render(
-      <DsButton isLoading aria-label="loading-button">
-        Loading
-      </DsButton>
-    )
-    // Spinner is a span with border classes; ensure button is disabled
-    const button = screen.getByLabelText("loading-button")
+  it("is disabled when loading", () => {
+    render(<DsButton isLoading>Loading</DsButton>)
+
+    const button = screen.getByRole("button")
+
     expect(button).toBeDisabled()
-    // children text should still be present
-    expect(screen.getByText("Loading")).toBeInTheDocument()
   })
 
-  it("is disabled when loading", () => {
-    render(<DsButton isLoading>Save</DsButton>)
-    expect(screen.getByRole("button")).toBeDisabled()
+  it("shows loading spinner when isLoading is true", () => {
+    render(<DsButton isLoading>Loading</DsButton>)
+
+    const spinner = document.querySelector(".animate-spin")
+
+    expect(spinner).toBeInTheDocument()
   })
 })
