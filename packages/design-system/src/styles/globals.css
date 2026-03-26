@@ -1,4 +1,5 @@
 @import "../tokens/colors.css";
+@import "../tokens/typography.css";
 
 @tailwind base;
 @tailwind components;
@@ -9,5 +10,6 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     -webkit-font-smoothing: antialiased;
+    font-family: var(--font-sans);
   }
 }

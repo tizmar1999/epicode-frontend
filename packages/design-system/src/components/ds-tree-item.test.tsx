@@ -25,7 +25,7 @@ describe("DsTreeItem", () => {
 
     const button = screen.getByRole("button")
 
-    expect(button.className).toMatch(/bg-primary/)
+    expect(button.className).toMatch(/3a2a59/)
   })
 
   it("renders children when provided", () => {

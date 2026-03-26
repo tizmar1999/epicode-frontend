@@ -33,6 +33,7 @@
     "vitest": "^1.6.0",
     "@testing-library/react": "^16.0.0",
     "@testing-library/jest-dom": "^6.5.0",
-    "jsdom": "^24.1.0"
+    "jsdom": "^24.1.0",
+    "lucide-react": "^0.452.0"
   }
 }

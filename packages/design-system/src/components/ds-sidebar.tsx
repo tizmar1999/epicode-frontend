@@ -1,6 +1,15 @@
 import * as React from "react"
 
 import { cn } from "@workspace/ui/lib/utils"
+import {
+  Book,
+  FileText,
+  Play,
+  PlayCircle,
+  Box,
+  Folder,
+  Square,
+} from "lucide-react"
 
 import DsBadge from "./ds-badge"
 import { DsTreeItem } from "./ds-tree-item"
@@ -13,6 +22,8 @@ export type DsSidebarLesson = {
   title: string
   /** Status indicator */
   status: "completed" | "in-progress" | "locked"
+  /** Optional leading icon */
+  icon?: React.ReactNode
 }
 
 /** Group of lessons within a section */
@@ -23,6 +34,8 @@ export type DsSidebarLessonGroup = {
   title: string
   /** Lessons contained in this group */
   lessons: DsSidebarLesson[]
+  /** Optional leading icon */
+  icon?: React.ReactNode
 }
 
 /** Section inside a module containing lesson groups */
@@ -33,6 +46,8 @@ export type DsSidebarSection = {
   title: string
   /** Groups within the section */
   groups: DsSidebarLessonGroup[]
+  /** Optional leading icon */
+  icon?: React.ReactNode
 }
 
 /** Module grouping sections */
@@ -43,6 +58,8 @@ export type DsSidebarModule = {
   title: string
   /** Sections within the module */
   sections: DsSidebarSection[]
+  /** Optional leading icon */
+  icon?: React.ReactNode
 }
 
 /**
@@ -95,6 +112,17 @@ export function DsSidebar({
     }))
   }
 
+  const iconMap: Record<string, React.ReactNode> = {
+    cube: <Box className="w-3.5 h-3.5 text-foreground-muted" />,
+    book: <Book className="w-3.5 h-3.5 text-foreground-muted" />,
+    play: <Play className="w-3.5 h-3.5 text-foreground-muted" />,
+    "play-circle": <PlayCircle className="w-3.5 h-3.5 text-foreground-muted" />,
+    file: <FileText className="w-3.5 h-3.5 text-foreground-muted" />,
+    folder: <Folder className="w-3.5 h-3.5 text-foreground-muted" />,
+  }
+
+  const resolveIcon = (key?: string) => iconMap[key ?? ""] ?? <Square className="w-3.5 h-3.5 text-foreground-muted" />
+
   return (
     <div className="flex flex-col">
       {modules.map((mod) => (
@@ -102,6 +130,8 @@ export function DsSidebar({
           <DsTreeItem
             label={mod.title}
             level={0}
+            icon={resolveIcon(mod.icon)}
+            isOpen={!!openItems[mod.id]}
             onClick={() => toggleItem(mod.id)}
           >
             <AnimatedWrapper isOpen={!!openItems[mod.id]}>
@@ -110,6 +140,8 @@ export function DsSidebar({
                   key={section.id}
                   label={section.title}
                   level={1}
+                  icon={resolveIcon(section.icon)}
+                  isOpen={!!openItems[section.id]}
                   onClick={() => toggleItem(section.id)}
                 >
                   <AnimatedWrapper isOpen={!!openItems[section.id]}>
@@ -118,6 +150,8 @@ export function DsSidebar({
                         key={group.id}
                         label={group.title}
                         level={2}
+                        icon={resolveIcon(group.icon)}
+                        isOpen={!!openItems[group.id]}
                         onClick={() => toggleItem(group.id)}
                       >
                         <AnimatedWrapper isOpen={!!openItems[group.id]}>
@@ -127,6 +161,7 @@ export function DsSidebar({
                               label={lesson.title}
                               level={3}
                               isActive={lesson.id === selectedLessonId}
+                              icon={resolveIcon(lesson.icon)}
                               onClick={() => onSelectLesson(lesson.id)}
                               rightSlot={
                                 <DsBadge variant={lesson.status}>{lesson.status}</DsBadge>
