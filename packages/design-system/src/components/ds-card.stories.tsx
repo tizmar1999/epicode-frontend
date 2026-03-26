@@ -6,6 +6,14 @@ const meta: Meta<typeof DsCard> = {
   title: "Design System/Card",
   component: DsCard,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Container card with optional header and footer slots and an elevated variant.",
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: "select",

@@ -6,6 +6,14 @@ const meta: Meta<typeof DsBadge> = {
   title: "Design System/Badge",
   component: DsBadge,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Status badge for course and lesson states with multiple semantic color variants.",
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: "select",

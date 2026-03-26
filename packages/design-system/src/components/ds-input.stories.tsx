@@ -6,6 +6,14 @@ const meta: Meta<typeof DsInput> = {
   title: "Design System/Input",
   component: DsInput,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Form input with label, helper text, and error handling styled with the design system tokens.",
+      },
+    },
+  },
   argTypes: {
     error: { control: "boolean" },
   },

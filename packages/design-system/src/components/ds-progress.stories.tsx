@@ -6,6 +6,14 @@ const meta: Meta<typeof DsProgress> = {
   title: "Design System/Progress",
   component: DsProgress,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "A labeled progress indicator for completion percentages, with optional labels and clamped values.",
+      },
+    },
+  },
   argTypes: {
     value: { control: { type: "number", min: 0, max: 100, step: 1 } },
   },

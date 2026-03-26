@@ -1,11 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react"
 
-import DsButton from "./ds-button.js"
+import DsButton from "./ds-button"
 
 const meta: Meta<typeof DsButton> = {
   title: "Design System/Button",
   component: DsButton,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "A branded button with primary, secondary, outline variants, optional icons, and loading state.",
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: "select",
