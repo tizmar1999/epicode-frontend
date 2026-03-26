@@ -7,10 +7,6 @@ const config: Config = {
     "./components/**/*.{ts,tsx}",
     "./lib/**/*.{ts,tsx}",
     "../../packages/design-system/src/**/*.{ts,tsx}",
-    "../../packages/ui/src/components/button.tsx",
-    "../../packages/ui/src/components/card.tsx",
-    "../../packages/ui/src/components/input.tsx",
-    "../../packages/ui/src/components/progress.tsx",
   ],
   theme: {
     extend: {
