@@ -1,6 +1,9 @@
-import DsBadge from "@workspace/design-system/components/ds-badge"
-
 import { Course } from "@/lib/mock-data"
+import { useState } from "react"
+
+import { cn } from "@workspace/ui/lib/utils"
+import { DsTreeItem } from "@workspace/design-system/components/ds-tree-item"
+import DsBadge from "@workspace/design-system/components/ds-badge"
 
 type SidebarProps = {
   course: Course
@@ -13,41 +16,65 @@ export function Sidebar({
   selectedLessonId,
   onSelectLesson,
 }: SidebarProps) {
+  const [openItems, setOpenItems] = useState<Record<string, boolean>>({})
+
+  function toggleItem(id: string) {
+    setOpenItems((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }))
+  }
+
   return (
     <aside className="bg-background-secondary border-r border-border p-4 pt-6 h-full overflow-y-auto">
       <div className="flex flex-col gap-4">
         <h1 className="text-lg font-semibold mb-4">{course.title}</h1>
         <div className="flex flex-col gap-2">
           {course.modules.map((mod) => (
-            <div key={mod.id} className="flex flex-col gap-2 mt-4">
-              <div className="text-sm font-semibold">{mod.title}</div>
-              <div className="flex flex-col gap-2 pl-4 text-sm text-foreground-muted">
-                {mod.sections.map((section) => (
-                  <div key={section.id} className="flex flex-col gap-1 mt-2">
-                    <div className="text-xs uppercase tracking-wide text-foreground-muted mt-3">
-                      {section.title}
-                    </div>
-                    <div className="flex flex-col gap-1 pl-4 text-sm text-foreground">
-                      {section.lessons.map((lesson) => (
-                        <div
-                          key={lesson.id}
-                          onClick={() => onSelectLesson(lesson.id)}
-                          className={[
-                            "flex items-center justify-between px-2 py-1 rounded-md",
-                            "text-sm transition-colors mt-1",
-                            selectedLessonId === lesson.id
-                              ? "bg-primary/10 text-primary font-medium"
-                              : "hover:bg-muted cursor-pointer",
-                          ].join(" ")}
-                        >
-                          <span>{lesson.title}</span>
-                          <DsBadge variant={lesson.status}>{lesson.status}</DsBadge>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div key={mod.id} className="mt-4">
+              <DsTreeItem
+                label={mod.title}
+                level={0}
+                onClick={() => toggleItem(mod.id)}
+              >
+                <div
+                  className={cn(
+                    "overflow-hidden transition-all duration-300",
+                    openItems[mod.id] ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
+                  )}
+                >
+                  {mod.sections.map((section) => (
+                    <DsTreeItem
+                      key={section.id}
+                      label={section.title}
+                      level={1}
+                      onClick={() => toggleItem(section.id)}
+                    >
+                      <div
+                        className={cn(
+                          "overflow-hidden transition-all duration-300",
+                          openItems[section.id]
+                            ? "max-h-[800px] opacity-100"
+                            : "max-h-0 opacity-0"
+                        )}
+                      >
+                        {section.lessons.map((lesson) => (
+                          <DsTreeItem
+                            key={lesson.id}
+                            label={lesson.title}
+                            level={2}
+                            isActive={lesson.id === selectedLessonId}
+                            onClick={() => onSelectLesson(lesson.id)}
+                            rightSlot={
+                              <DsBadge variant={lesson.status}>{lesson.status}</DsBadge>
+                            }
+                          />
+                        ))}
+                      </div>
+                    </DsTreeItem>
+                  ))}
+                </div>
+              </DsTreeItem>
             </div>
           ))}
         </div>
