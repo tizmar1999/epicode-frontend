@@ -12,7 +12,8 @@ export default function Page() {
   const [selectedLessonId, setSelectedLessonId] = useState<string | null>(null)
   const selectedLesson = mockCourse.modules
     .flatMap((m) => m.sections)
-    .flatMap((s) => s.lessons)
+    .flatMap((s) => s.groups)
+    .flatMap((g) => g.lessons)
     .find((l) => l.id === selectedLessonId)
 
   return (

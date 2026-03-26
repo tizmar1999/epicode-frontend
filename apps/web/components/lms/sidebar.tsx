@@ -58,17 +58,37 @@ export function Sidebar({
                             : "max-h-0 opacity-0"
                         )}
                       >
-                        {section.lessons.map((lesson) => (
+                        {section.groups?.map((group) => (
                           <DsTreeItem
-                            key={lesson.id}
-                            label={lesson.title}
+                            key={group.id}
+                            label={group.title}
                             level={2}
-                            isActive={lesson.id === selectedLessonId}
-                            onClick={() => onSelectLesson(lesson.id)}
-                            rightSlot={
-                              <DsBadge variant={lesson.status}>{lesson.status}</DsBadge>
-                            }
-                          />
+                            onClick={() => toggleItem(group.id)}
+                          >
+                            <div
+                              className={cn(
+                                "overflow-hidden transition-all duration-300",
+                                openItems[group.id]
+                                  ? "max-h-[800px] opacity-100"
+                                  : "max-h-0 opacity-0"
+                              )}
+                            >
+                              {group.lessons.map((lesson) => (
+                                <DsTreeItem
+                                  key={lesson.id}
+                                  label={lesson.title}
+                                  level={3}
+                                  isActive={lesson.id === selectedLessonId}
+                                  onClick={() => onSelectLesson(lesson.id)}
+                                  rightSlot={
+                                    <DsBadge variant={lesson.status}>
+                                      {lesson.status}
+                                    </DsBadge>
+                                  }
+                                />
+                              ))}
+                            </div>
+                          </DsTreeItem>
                         ))}
                       </div>
                     </DsTreeItem>

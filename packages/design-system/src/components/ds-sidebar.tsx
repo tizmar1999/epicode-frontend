@@ -14,6 +14,12 @@ type Lesson = {
 type Section = {
   id: string
   title: string
+  groups: LessonGroup[]
+}
+
+type LessonGroup = {
+  id: string
+  title: string
   lessons: Lesson[]
 }
 
@@ -80,17 +86,28 @@ export function DsSidebar({
                   onClick={() => toggleItem(section.id)}
                 >
                   <AnimatedWrapper isOpen={!!openItems[section.id]}>
-                    {section.lessons.map((lesson) => (
+                    {section.groups.map((group) => (
                       <DsTreeItem
-                        key={lesson.id}
-                        label={lesson.title}
+                        key={group.id}
+                        label={group.title}
                         level={2}
-                        isActive={lesson.id === selectedLessonId}
-                        onClick={() => onSelectLesson(lesson.id)}
-                        rightSlot={
-                          <DsBadge variant={lesson.status}>{lesson.status}</DsBadge>
-                        }
-                      />
+                        onClick={() => toggleItem(group.id)}
+                      >
+                        <AnimatedWrapper isOpen={!!openItems[group.id]}>
+                          {group.lessons.map((lesson) => (
+                            <DsTreeItem
+                              key={lesson.id}
+                              label={lesson.title}
+                              level={3}
+                              isActive={lesson.id === selectedLessonId}
+                              onClick={() => onSelectLesson(lesson.id)}
+                              rightSlot={
+                                <DsBadge variant={lesson.status}>{lesson.status}</DsBadge>
+                              }
+                            />
+                          ))}
+                        </AnimatedWrapper>
+                      </DsTreeItem>
                     ))}
                   </AnimatedWrapper>
                 </DsTreeItem>

@@ -6,13 +6,18 @@ export type Lesson = {
   title: string
   type: LessonType
   status: LessonStatus
-  format?: "video" | "pdf" | "article"
+}
+
+export type LessonGroup = {
+  id: string
+  title: string // "Video", "Teoria"
+  lessons: Lesson[]
 }
 
 export type Section = {
   id: string
   title: string
-  lessons: Lesson[]
+  groups: LessonGroup[]
 }
 
 export type Module = {
@@ -38,47 +43,48 @@ export const mockCourse: Course = {
         {
           id: "sec-1",
           title: "Introduzione al mondo dei dati",
-          lessons: [
+          groups: [
             {
-              id: "l-1",
-              title: "Intro all'analisi dei dati (1)",
-              type: "video",
-              status: "completed",
-              format: "video",
+              id: "group-1",
+              title: "Video",
+              lessons: [
+                {
+                  id: "l-1",
+                  title: "Intro all'analisi dei dati (1)",
+                  type: "video",
+                  status: "completed",
+                },
+                {
+                  id: "l-2",
+                  title: "Intro all'analisi dei dati (2)",
+                  type: "video",
+                  status: "completed",
+                },
+                {
+                  id: "l-3",
+                  title: "Analisi dati",
+                  type: "video",
+                  status: "in-progress",
+                },
+                {
+                  id: "l-4",
+                  title: "Gestione dati",
+                  type: "video",
+                  status: "locked",
+                },
+              ],
             },
             {
-              id: "l-2",
-              title: "Intro all'analisi dei dati (2)",
-              type: "video",
-              status: "completed",
-              format: "video",
-            },
-            {
-              id: "l-3",
-              title: "Analisi dati",
-              type: "video",
-              status: "in-progress",
-              format: "video",
-            },
-            {
-              id: "l-4",
-              title: "Gestione dati",
-              type: "video",
-              status: "locked",
-              format: "video",
-            },
-          ],
-        },
-        {
-          id: "sec-2",
-          title: "Teoria",
-          lessons: [
-            {
-              id: "l-5",
-              title: "Dati 1",
-              type: "article",
-              status: "locked",
-              format: "pdf",
+              id: "group-2",
+              title: "Teoria",
+              lessons: [
+                {
+                  id: "l-5",
+                  title: "Dati 1",
+                  type: "article",
+                  status: "locked",
+                },
+              ],
             },
           ],
         },
@@ -86,33 +92,112 @@ export const mockCourse: Course = {
     },
     {
       id: "mod-1",
-      title: "M1. Excel: febbraio 9 - marzo 13",
-      sections: [],
+      title: "M1. Advanced Topics",
+      sections: [
+        {
+          id: "sec-2",
+          title: "Advanced Data Analysis",
+          groups: [
+            {
+              id: "group-3",
+              title: "Video",
+              lessons: [
+                {
+                  id: "l-6",
+                  title: "Advanced Analytics (1)",
+                  type: "video",
+                  status: "completed",
+                },
+                {
+                  id: "l-7",
+                  title: "Advanced Analytics (2)",
+                  type: "video",
+                  status: "completed",
+                },
+                {
+                  id: "l-8",
+                  title: "Machine Learning Basics",
+                  type: "video",
+                  status: "in-progress",
+                },
+                {
+                  id: "l-9",
+                  title: "Deep Learning Fundamentals",
+                  type: "video",
+                  status: "locked",
+                },
+              ],
+            },
+            {
+              id: "group-4",
+              title: "Teoria",
+              lessons: [
+                {
+                  id: "l-10",
+                  title: "Advanced Datasets",
+                  type: "article",
+                  status: "locked",
+                },
+              ],
+            },
+          ],
+        },
+      ],
     },
     {
       id: "mod-2",
-      title: "M2: marzo 16 - aprile 17",
-      sections: [],
-    },
-    {
-      id: "mod-3",
-      title: "M3, aprile 20 - maggio 22",
-      sections: [],
-    },
-    {
-      id: "mod-4",
-      title: "M4. Google Looker Studio: maggio",
-      sections: [],
-    },
-    {
-      id: "mod-5",
-      title: "M5. Power BI: giugno 15 - luglio 17",
-      sections: [],
-    },
-    {
-      id: "mod-6",
-      title: "Capstone Project & Career Training",
-      sections: [],
-    },
+      title: "M2. Data Visualization",
+      sections: [
+        {
+          id: "sec-3",
+          title: "Data Visualization Techniques",
+          groups: [
+            {
+              id: "group-5",
+              title: "Video",
+              lessons: [
+                {
+                  id: "l-11",
+                  title: "Visualization Tools (1)",
+                  type: "video",
+                  status: "completed",
+                },
+                {
+                  id: "l-12",
+                  title: "Visualization Tools (2)",
+                  type: "video",
+                  status: "completed",
+                },
+                {
+                  id: "l-13",
+                  title: "Interactive Dashboards",
+                  type: "video",
+                  status: "in-progress",
+                },
+                {
+                  id: "l-14",
+                  title: "Data Storytelling",
+                  type: "video",
+                  status: "locked",
+                },
+              ],
+            },
+            {
+              id: "group-6",
+              title: "Teoria",
+              lessons: [
+                {
+                  id: "l-15",
+                  title: "Visualization Principles",
+                  type: "article",
+                  status: "locked",
+                },
+              ],
+            },
+          ],
+        },
+      ]
+    }
   ],
 }
+
