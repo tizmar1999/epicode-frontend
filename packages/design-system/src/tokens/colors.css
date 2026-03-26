@@ -9,17 +9,5 @@
   --color-border: #1b1e2d;
 
   --color-primary: #8b2dff;
-}
-
-.dark {
-  --color-background: #0b0c15;
-  --color-background-secondary: #0c0d17;
-  --color-muted: #121421;
-
-  --color-foreground: #d8dbe6;
-  --color-foreground-muted: #9aa0b4;
-
-  --color-border: #1b1e2d;
-
-  --color-primary: #8b2dff;
+  --color-active: #3a2a59;
 }
