@@ -16,7 +16,7 @@ export default function Page() {
     .find((l) => l.id === selectedLessonId)
 
   return (
-    <div className="grid grid-cols-[380px_1fr_420px] h-screen">
+    <div className="grid grid-cols-[380px_1fr_420px] h-screen bg-background">
       <Sidebar
         course={mockCourse}
         selectedLessonId={selectedLessonId}

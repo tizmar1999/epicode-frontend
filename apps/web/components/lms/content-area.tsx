@@ -15,7 +15,7 @@ const typeToBadge: Record<Lesson["type"], "default" | "in-progress" | "new"> = {
 export function ContentArea({ lesson }: ContentAreaProps) {
   if (!lesson) {
     return (
-      <main className="flex flex-col p-6 gap-4 h-full">
+      <main className="flex flex-col p-6 gap-4 h-full bg-background">
         <div className="h-full flex items-center justify-center text-foreground-muted">
           Select a lesson
         </div>
@@ -24,12 +24,12 @@ export function ContentArea({ lesson }: ContentAreaProps) {
   }
 
   return (
-    <main className="flex flex-col p-6 gap-4">
+    <main className="flex flex-col p-6 gap-4 bg-background">
       <div className="flex items-center gap-2">
-        <h2 className="text-xl font-semibold">{lesson.title}</h2>
+        <h2 className="text-2xl font-semibold mb-2">{lesson.title}</h2>
         <DsBadge variant={typeToBadge[lesson.type]}>{lesson.type}</DsBadge>
       </div>
-      <div className="h-[300px] bg-muted rounded-lg flex items-center justify-center text-foreground-muted">
+      <div className="h-[320px] bg-background-secondary border border-border rounded-xl flex items-center justify-center text-foreground-muted">
         {lesson.type === "video" && "Video player"}
         {lesson.type === "article" && "Article content"}
         {lesson.type === "quiz" && "Quiz content"}
