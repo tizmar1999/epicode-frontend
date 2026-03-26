@@ -3,10 +3,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "react-jsx",
+    "types": ["vitest", "vite/client"],
     "paths": {
       "@workspace/design-system/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "tailwind.config.ts"],
+  "include": ["src/**/*", "tailwind.config.ts", "vitest.setup.ts"],
   "exclude": ["node_modules", "dist"]
 }
