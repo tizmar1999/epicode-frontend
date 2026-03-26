@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Sidebar } from "@/components/lms/sidebar"
 import { TopBar } from "@/components/lms/top-bar"
 import { ContentArea } from "@/components/lms/content-area"
+import { ChatPanel } from "@/components/lms/chat-panel"
 import { mockCourse } from "@/lib/mock-data"
 
 export default function Page() {
@@ -27,8 +28,8 @@ export default function Page() {
           <ContentArea lesson={selectedLesson} />
         </div>
       </div>
-      <section className="bg-background-secondary border-l border-border p-4">
-        Chat
+      <section className="bg-background-secondary border-l border-border">
+        <ChatPanel />
       </section>
     </div>
   )
