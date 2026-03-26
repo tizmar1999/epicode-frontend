@@ -1,0 +1,9 @@
+{
+  "extends": "@workspace/typescript-config/react-library.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "types": ["vite/client"]
+  },
+  "include": [".storybook/**/*", "src/**/*"]
+}
