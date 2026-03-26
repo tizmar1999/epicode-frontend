@@ -10,8 +10,8 @@
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
-    "format": "ultracite",
-    "format:check": "ultracite --check"
+    "format": "ultracite fix",
+    "format:check": "ultracite check"
   },
   "dependencies": {
     "@workspace/ui": "workspace:*",

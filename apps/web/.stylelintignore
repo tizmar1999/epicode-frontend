@@ -1,0 +1,16 @@
+components.json
+eslint.config.js
+next-env.d.ts
+next.config.mjs
+postcss.config.js
+package.json
+postcss.config.mjs
+.next
+tailwind.config.ts
+tsconfig.json**/*.ts
+**/*.tsx
+**/*.js
+**/*.mjs
+**/*.json
+**/*.ico
+**/*.ts
