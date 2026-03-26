@@ -2,12 +2,16 @@
 
 import { useState } from "react"
 
-import DsBadge from "@workspace/design-system/components/ds-badge"
 import { Sidebar } from "@/components/lms/sidebar"
+import { ContentArea } from "@/components/lms/content-area"
 import { mockCourse } from "@/lib/mock-data"
 
 export default function Page() {
   const [selectedLessonId, setSelectedLessonId] = useState<string | null>(null)
+  const selectedLesson = mockCourse.modules
+    .flatMap((m) => m.sections)
+    .flatMap((s) => s.lessons)
+    .find((l) => l.id === selectedLessonId)
 
   return (
     <div className="grid grid-cols-[380px_1fr_420px] h-screen">
@@ -16,7 +20,7 @@ export default function Page() {
         selectedLessonId={selectedLessonId}
         onSelectLesson={setSelectedLessonId}
       />
-      <main className="flex flex-col p-6">Content</main>
+      <ContentArea lesson={selectedLesson} />
       <section className="bg-background-secondary border-l border-border p-4">
         Chat
       </section>
