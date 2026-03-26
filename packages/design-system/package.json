@@ -4,7 +4,10 @@
   "type": "module",
   "private": true,
   "exports": {
-    "./globals.css": "./src/styles/globals.css"
+    "./globals.css": "./src/styles/globals.css",
+    "./components/*": "./src/components/*.tsx",
+    "./tokens/*": "./src/tokens/*",
+    "./tailwind.config": "./tailwind.config.ts"
   },
   "dependencies": {
     "@workspace/ui": "*",

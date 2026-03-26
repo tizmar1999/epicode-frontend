@@ -28,7 +28,7 @@ const dsButtonVariants = cva(
   }
 )
 
-type DsButtonProps = React.ComponentProps<typeof UiButton> &
+type DsButtonProps = Omit<React.ComponentProps<typeof UiButton>, "variant" | "size"> &
   VariantProps<typeof dsButtonVariants> & {
     isLoading?: boolean
     leftIcon?: React.ReactNode
