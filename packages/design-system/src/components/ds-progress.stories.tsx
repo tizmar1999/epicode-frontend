@@ -16,6 +16,8 @@ const meta: Meta<typeof DsProgress> = {
   },
   argTypes: {
     value: { control: { type: "number", min: 0, max: 100, step: 1 } },
+    label: { control: "text" },
+    className: { control: false },
   },
 }
 
@@ -42,4 +44,11 @@ export const EdgeCases: Story = {
       <DsProgress value={100} label="Complete" />
     </div>
   ),
+}
+
+export const Midpoint: Story = {
+  args: {
+    value: 50,
+    label: "Halfway there",
+  },
 }

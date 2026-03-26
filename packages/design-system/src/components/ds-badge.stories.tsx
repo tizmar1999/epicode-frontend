@@ -19,6 +19,7 @@ const meta: Meta<typeof DsBadge> = {
       control: "select",
       options: ["default", "completed", "in-progress", "locked", "new"],
     },
+    children: { control: "text" },
   },
 }
 

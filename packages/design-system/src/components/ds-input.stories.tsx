@@ -16,6 +16,12 @@ const meta: Meta<typeof DsInput> = {
   },
   argTypes: {
     error: { control: "boolean" },
+    label: { control: "text" },
+    helperText: { control: "text" },
+    errorMessage: { control: "text" },
+    placeholder: { control: "text" },
+    type: { control: "text" },
+    disabled: { control: "boolean" },
   },
 }
 
@@ -44,5 +50,13 @@ export const ErrorState: Story = {
     error: true,
     errorMessage: "Password is too short",
     placeholder: "••••••••",
+  },
+}
+
+export const Disabled: Story = {
+  args: {
+    label: "Email",
+    placeholder: "you@example.com",
+    disabled: true,
   },
 }

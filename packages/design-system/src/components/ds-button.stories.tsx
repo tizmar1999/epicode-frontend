@@ -10,7 +10,7 @@ const meta: Meta<typeof DsButton> = {
     docs: {
       description: {
         component:
-          "A branded button with primary, secondary, outline variants, optional icons, and loading state.",
+          "A branded button with primary, secondary, outline variants, optional icons, loading and disabled states.",
       },
     },
   },
@@ -19,9 +19,15 @@ const meta: Meta<typeof DsButton> = {
       control: "select",
       options: ["primary", "secondary", "outline"],
     },
-    isLoading: {
-      control: "boolean",
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
     },
+    isLoading: { control: "boolean" },
+    disabled: { control: "boolean" },
+    leftIcon: { control: "text" },
+    rightIcon: { control: "text" },
+    children: { control: "text" },
   },
 }
 
@@ -53,8 +59,16 @@ export const Outline: Story = {
 export const Loading: Story = {
   args: {
     variant: "primary",
-    children: "Loading",
+    children: "Submitting...",
     isLoading: true,
+  },
+}
+
+export const Disabled: Story = {
+  args: {
+    variant: "primary",
+    children: "Disabled",
+    disabled: true,
   },
 }
 
@@ -62,7 +76,7 @@ export const WithIcons: Story = {
   args: {
     variant: "primary",
     children: "With Icons",
-    leftIcon: <span>←</span>,
-    rightIcon: <span>→</span>,
+    leftIcon: "←",
+    rightIcon: "→",
   },
 }

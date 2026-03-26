@@ -19,6 +19,9 @@ const meta: Meta<typeof DsCard> = {
       control: "select",
       options: ["default", "elevated"],
     },
+    header: { control: "text" },
+    footer: { control: "text" },
+    children: { control: "text" },
   },
 }
 
@@ -33,16 +36,25 @@ export const Default: Story = {
 
 export const WithHeaderFooter: Story = {
   args: {
-    header: <div className="text-base font-semibold">Card Header</div>,
-    footer: <div className="text-sm text-foreground-muted">Footer note</div>,
-    children: <p className="text-sm text-foreground">Body content goes here.</p>,
+    header: "Card Header",
+    footer: "Footer note",
+    children: "Body content goes here.",
   },
 }
 
 export const Elevated: Story = {
   args: {
     variant: "elevated",
-    header: <div className="text-base font-semibold">Elevated Card</div>,
-    children: <p className="text-sm text-foreground">With subtle shadow.</p>,
+    header: "Elevated Card",
+    children: "With subtle shadow.",
+  },
+}
+
+export const LongContent: Story = {
+  args: {
+    header: "Documentation",
+    children:
+      "This card demonstrates longer content to check padding and spacing across multiple lines. It should remain readable and consistent.",
+    footer: "Updated 2 hours ago",
   },
 }
