@@ -1,16 +1,19 @@
 @import "../tokens/colors.css";
 @import "../tokens/typography.css";
 
+/* biome-ignore lint/suspicious/noUnknownAtRules */
 @tailwind base;
+/* biome-ignore lint/suspicious/noUnknownAtRules */
 @tailwind components;
+/* biome-ignore lint/suspicious/noUnknownAtRules */
 @tailwind utilities;
 
 @layer base {
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    -webkit-font-smoothing: antialiased;
     font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    color: var(--color-foreground);
+    background-color: var(--color-background);
   }
 
   .scrollbar-hide::-webkit-scrollbar {

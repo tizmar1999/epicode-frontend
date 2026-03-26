@@ -11,8 +11,11 @@ module.exports = {
     {
       files: ["*.ts", "*.tsx"],
       rules: {
-        "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          { argsIgnorePattern: "^_" },
+        ],
       },
     },
   ],
-}
+};

@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
-import DsButton from "./ds-button"
+import DsButton from "./ds-button";
 
 const meta: Meta<typeof DsButton> = {
   title: "Design System/Button",
@@ -29,32 +29,32 @@ const meta: Meta<typeof DsButton> = {
     rightIcon: { control: "text" },
     children: { control: "text" },
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof DsButton>
+type Story = StoryObj<typeof DsButton>;
 
 export const Primary: Story = {
   args: {
     variant: "primary",
     children: "Primary Button",
   },
-}
+};
 
 export const Secondary: Story = {
   args: {
     variant: "secondary",
     children: "Secondary Button",
   },
-}
+};
 
 export const Outline: Story = {
   args: {
     variant: "outline",
     children: "Outline Button",
   },
-}
+};
 
 export const Loading: Story = {
   args: {
@@ -62,7 +62,7 @@ export const Loading: Story = {
     children: "Submitting...",
     isLoading: true,
   },
-}
+};
 
 export const Disabled: Story = {
   args: {
@@ -70,7 +70,7 @@ export const Disabled: Story = {
     children: "Disabled",
     disabled: true,
   },
-}
+};
 
 export const WithIcons: Story = {
   args: {
@@ -79,4 +79,4 @@ export const WithIcons: Story = {
     leftIcon: "←",
     rightIcon: "→",
   },
-}
+};

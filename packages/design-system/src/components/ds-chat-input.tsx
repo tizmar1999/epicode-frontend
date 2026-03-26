@@ -1,47 +1,56 @@
-import * as React from "react"
-
-import { cn } from "@workspace/ui/lib/utils"
-import DsButton from "./ds-button"
+import { cn } from "@workspace/ui/lib/utils";
+import { useState } from "react";
+import DsButton from "./ds-button";
 
 /**
  * Props for DsChatInput component.
  */
-export type DsChatInputProps = {
-  /** Placeholder text for the textarea */
-  placeholder?: string
-  /** Callback fired when sending a non-empty value */
-  onSend?: (value: string) => void
+export interface DsChatInputProps {
   /** Optional container className */
-  className?: string
+  className?: string;
+  /** Callback fired when sending a non-empty value */
+  onSend?: (value: string) => void;
+  /** Placeholder text for the textarea */
+  placeholder?: string;
 }
 
 /**
  * Input area for sending chat messages with validation.
  * Prevents empty sends and clears after submit.
  */
-export function DsChatInput({ placeholder, onSend, className }: DsChatInputProps) {
-  const [value, setValue] = React.useState("")
+export function DsChatInput({
+  placeholder,
+  onSend,
+  className,
+}: DsChatInputProps) {
+  const [value, setValue] = useState("");
 
   function handleSend() {
-    const trimmed = value.trim()
-    if (!trimmed) return
-    onSend?.(trimmed)
-    setValue("")
+    const trimmed = value.trim();
+    if (!trimmed) {
+      return;
+    }
+    onSend?.(trimmed);
+    setValue("");
   }
 
   return (
     <div className={cn("flex flex-col gap-2", className)}>
       <textarea
-        value={value}
+        className="min-h-[80px] w-full rounded-md border border-border bg-background p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
-        className="w-full min-h-[80px] rounded-md border border-border bg-background p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+        value={value}
       />
-      <DsButton onClick={handleSend} disabled={!value.trim()} className="w-full mt-1">
+      <DsButton
+        className="mt-1 w-full"
+        disabled={!value.trim()}
+        onClick={handleSend}
+      >
         Send
       </DsButton>
     </div>
-  )
+  );
 }
 
-export default DsChatInput
+export default DsChatInput;

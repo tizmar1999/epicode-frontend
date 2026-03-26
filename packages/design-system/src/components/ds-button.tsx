@@ -1,19 +1,18 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-
-import { Button as UiButton } from "@workspace/ui/components/button"
-import { cn } from "@workspace/ui/lib/utils"
+import { Button as UiButton } from "@workspace/ui/components/button";
+import { cn } from "@workspace/ui/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
+import type * as React from "react";
 
 const dsButtonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed",
+  "inline-flex items-center justify-center gap-2 rounded-lg font-medium text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60",
   {
     variants: {
       variant: {
-        primary: "bg-primary text-white hover:opacity-90 border border-primary",
+        primary: "border border-primary bg-primary text-white hover:opacity-90",
         secondary:
-          "bg-background-secondary text-foreground hover:bg-muted border border-border",
+          "border border-border bg-background-secondary text-foreground hover:bg-muted",
         outline:
-          "bg-transparent text-foreground border border-border hover:bg-muted",
+          "border border-border bg-transparent text-foreground hover:bg-muted",
       },
       size: {
         sm: "h-8 px-3",
@@ -26,7 +25,7 @@ const dsButtonVariants = cva(
       size: "md",
     },
   }
-)
+);
 
 /**
  * Props for DsButton component.
@@ -35,14 +34,14 @@ const dsButtonVariants = cva(
 export type DsButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof dsButtonVariants> & {
     /** Shows loading spinner and disables interaction */
-    isLoading?: boolean
+    isLoading?: boolean;
     /** Optional icon on the left */
-    leftIcon?: React.ReactNode
+    leftIcon?: React.ReactNode;
     /** Optional icon on the right */
-    rightIcon?: React.ReactNode
+    rightIcon?: React.ReactNode;
     /** Render as child component instead of button */
-    asChild?: boolean
-  }
+    asChild?: boolean;
+  };
 
 /**
  * Reusable button with variants, sizes, and loading state.
@@ -62,9 +61,9 @@ function DsButton({
   return (
     <UiButton
       aria-busy={isLoading}
-      type="button"
       className={cn(dsButtonVariants({ variant, size }), className)}
       disabled={disabled || isLoading}
+      type="button"
       {...props}
     >
       {leftIcon && <span className="inline-flex items-center">{leftIcon}</span>}
@@ -77,8 +76,8 @@ function DsButton({
         <span className="inline-flex items-center">{rightIcon}</span>
       )}
     </UiButton>
-  )
+  );
 }
 
-export { DsButton, dsButtonVariants }
-export default DsButton
+export { DsButton, dsButtonVariants };
+export default DsButton;

@@ -7,5 +7,9 @@
     "emitDecoratorMetadata": false,
     "esModuleInterop": true
   },
-  "include": [".storybook/**/*", "src/**/*", "../../packages/design-system/src/**/*"]
+  "include": [
+    ".storybook/**/*",
+    "src/**/*",
+    "../../packages/design-system/src/**/*"
+  ]
 }

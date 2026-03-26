@@ -1,7 +1,7 @@
-import { render, screen, fireEvent } from "@testing-library/react"
-import { describe, it, expect, vi } from "vitest"
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 
-import { DsSidebar } from "./ds-sidebar"
+import { DsSidebar } from "./ds-sidebar";
 
 const mockModules = [
   {
@@ -27,70 +27,70 @@ const mockModules = [
       },
     ],
   },
-]
+];
 
 describe("DsSidebar", () => {
   it("renders module title", () => {
     render(
       <DsSidebar
         modules={mockModules}
-        selectedLessonId={null}
         onSelectLesson={() => {}}
+        selectedLessonId={null}
       />
-    )
+    );
 
-    expect(screen.getByText("Module 1")).toBeInTheDocument()
-  })
+    expect(screen.getByText("Module 1")).toBeInTheDocument();
+  });
 
   it("expands module on click", () => {
     render(
       <DsSidebar
         modules={mockModules}
-        selectedLessonId={null}
         onSelectLesson={() => {}}
+        selectedLessonId={null}
       />
-    )
+    );
 
-    expect(screen.getByText("Section 1")).toBeInTheDocument()
-  })
+    expect(screen.getByText("Section 1")).toBeInTheDocument();
+  });
 
   it("expands section on click", () => {
     render(
       <DsSidebar
         modules={mockModules}
-        selectedLessonId={null}
         onSelectLesson={() => {}}
+        selectedLessonId={null}
       />
-    )
+    );
 
-    expect(screen.getByText("Video")).toBeInTheDocument()
-  })
+    expect(screen.getByText("Video")).toBeInTheDocument();
+  });
 
   it("shows lessons when group is expanded", () => {
     render(
       <DsSidebar
         modules={mockModules}
-        selectedLessonId={null}
         onSelectLesson={() => {}}
+        selectedLessonId={null}
       />
-    )
+    );
 
-    expect(screen.getByText("Lesson 1")).toBeInTheDocument()
-  })
+    expect(screen.getByText("Lesson 1")).toBeInTheDocument();
+  });
 
   it("calls onSelectLesson when lesson is clicked", () => {
-    const handleSelect = vi.fn()
+    const handleSelect = vi.fn();
 
     render(
       <DsSidebar
         modules={mockModules}
-        selectedLessonId={null}
         onSelectLesson={handleSelect}
+        selectedLessonId={null}
       />
-    )
+    );
 
-    fireEvent.click(screen.getByText("Lesson 1"))
+    fireEvent.click(screen.getByText("Lesson 1"));
 
-    expect(handleSelect).toHaveBeenCalledWith("l-1")
-  })
-})
+    expect(handleSelect).toHaveBeenCalledWith("l-1");
+  });
+});

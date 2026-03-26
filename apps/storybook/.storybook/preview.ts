@@ -1,5 +1,5 @@
-import "@workspace/design-system/globals.css"
-import type { Preview } from "@storybook/react"
+import "@workspace/design-system/globals.css";
+import type { Preview } from "@storybook/react";
 
 const preview: Preview = {
   parameters: {
@@ -11,6 +11,6 @@ const preview: Preview = {
       },
     },
   },
-}
+};
 
-export default preview
+export default preview;

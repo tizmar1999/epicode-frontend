@@ -1,64 +1,64 @@
-import { DsTreeItem } from "./ds-tree-item"
+import { DsTreeItem } from "./ds-tree-item";
 
 /** Lesson node definition used by DsSidebar */
 export type DsSidebarLesson = {
   /** Unique identifier for the lesson */
-  id: string
+  id: string;
   /** Lesson title */
-  title: string
+  title: string;
   /** Status indicator */
-  status: "completed" | "in-progress" | "locked"
+  status: "completed" | "in-progress" | "locked";
   /** Optional leading icon */
-  icon?: string
-}
+  icon?: string;
+};
 
 /** Group of lessons within a section */
 export type DsSidebarLessonGroup = {
   /** Unique identifier for the group */
-  id: string
+  id: string;
   /** Group title (e.g., Video, Teoria) */
-  title: string
+  title: string;
   /** Lessons contained in this group */
-  lessons: DsSidebarLesson[]
+  lessons: DsSidebarLesson[];
   /** Optional leading icon */
-  icon?: string
-}
+  icon?: string;
+};
 
 /** Section inside a module containing lesson groups */
 export type DsSidebarSection = {
   /** Unique identifier for the section */
-  id: string
+  id: string;
   /** Section title */
-  title: string
+  title: string;
   /** Groups within the section */
-  groups: DsSidebarLessonGroup[]
+  groups: DsSidebarLessonGroup[];
   /** Optional leading icon */
-  icon?: string
-}
+  icon?: string;
+};
 
 /** Module grouping sections */
-export type DsSidebarModule = {
-  /** Unique identifier for the module */
-  id: string
-  /** Module title */
-  title: string
-  /** Sections within the module */
-  sections: DsSidebarSection[]
+export interface DsSidebarModule {
   /** Optional leading icon */
-  icon?: string
+  icon?: string;
+  /** Unique identifier for the module */
+  id: string;
+  /** Sections within the module */
+  sections: DsSidebarSection[];
+  /** Module title */
+  title: string;
 }
 
 /**
  * Props for DsSidebar component.
  * Sidebar navigation component for rendering course/module/lesson hierarchy.
  */
-export type DsSidebarProps = {
+export interface DsSidebarProps {
   /** Modules to render in the sidebar */
-  modules: DsSidebarModule[]
-  /** Currently selected lesson id */
-  selectedLessonId: string | null
+  modules: DsSidebarModule[];
   /** Callback when a lesson is selected */
-  onSelectLesson: (lessonId: string) => void
+  onSelectLesson: (lessonId: string) => void;
+  /** Currently selected lesson id */
+  selectedLessonId: string | null;
 }
 
 /**
@@ -73,31 +73,31 @@ export function DsSidebar({
   return (
     <div className="flex flex-col">
       {modules.map((mod) => (
-        <div key={mod.id} className="mt-2">
-          <DsTreeItem label={mod.title} level={0} icon={mod.icon ?? "cube"}>
+        <div className="mt-2" key={mod.id}>
+          <DsTreeItem icon={mod.icon ?? "cube"} label={mod.title} level={0}>
             {mod.sections.map((section) => (
               <DsTreeItem
+                icon={section.icon ?? "book"}
                 key={section.id}
                 label={section.title}
                 level={1}
-                icon={section.icon ?? "book"}
               >
                 {section.groups.map((group) => (
                   <DsTreeItem
+                    icon={group.icon ?? "folder"}
                     key={group.id}
                     label={group.title}
                     level={2}
-                    icon={group.icon ?? "folder"}
                   >
                     {group.lessons.map((lesson) => (
                       <DsTreeItem
+                        defaultOpen
+                        icon={lesson.icon ?? "file"}
+                        isActive={lesson.id === selectedLessonId}
                         key={lesson.id}
                         label={lesson.title}
                         level={3}
-                        isActive={lesson.id === selectedLessonId}
-                        icon={lesson.icon ?? "file"}
                         onClick={() => onSelectLesson(lesson.id)}
-                        defaultOpen
                       />
                     ))}
                   </DsTreeItem>
@@ -108,5 +108,5 @@ export function DsSidebar({
         </div>
       ))}
     </div>
-  )
+  );
 }

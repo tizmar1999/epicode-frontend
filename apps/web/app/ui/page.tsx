@@ -1,64 +1,66 @@
-import DsBadge from "@workspace/design-system/components/ds-badge"
-import DsButton from "@workspace/design-system/components/ds-button"
-import DsCard from "@workspace/design-system/components/ds-card"
-import DsInput from "@workspace/design-system/components/ds-input"
-import DsProgress from "@workspace/design-system/components/ds-progress"
+import DsBadge from "@workspace/design-system/components/ds-badge";
+import DsButton from "@workspace/design-system/components/ds-button";
+import DsCard from "@workspace/design-system/components/ds-card";
+import DsInput from "@workspace/design-system/components/ds-input";
+import DsProgress from "@workspace/design-system/components/ds-progress";
 
 export default function UiPreviewPage() {
   return (
     <main className="flex flex-col gap-6 p-6">
       <section className="flex flex-col gap-3">
-        <h2 className="text-lg font-semibold">Buttons</h2>
+        <h2 className="font-semibold text-lg">Buttons</h2>
         <div className="flex flex-wrap gap-3">
           <DsButton variant="primary">Primary</DsButton>
           <DsButton variant="secondary">Secondary</DsButton>
           <DsButton variant="outline">Outline</DsButton>
-          <DsButton variant="primary" isLoading>
+          <DsButton isLoading variant="primary">
             Loading
           </DsButton>
         </div>
       </section>
 
       <section className="flex flex-col gap-3">
-        <h2 className="text-lg font-semibold">Input</h2>
-        <div className="flex flex-col gap-3 max-w-md">
+        <h2 className="font-semibold text-lg">Input</h2>
+        <div className="flex max-w-md flex-col gap-3">
           <DsInput label="Email" placeholder="you@example.com" />
           <DsInput
-            label="Username"
             helperText="3-20 characters, letters and numbers"
+            label="Username"
             placeholder="epicode-user"
           />
           <DsInput
-            label="Password"
-            type="password"
             error
             errorMessage="Password is too short"
+            label="Password"
             placeholder="••••••••"
+            type="password"
           />
         </div>
       </section>
 
       <section className="flex flex-col gap-3">
-        <h2 className="text-lg font-semibold">Card</h2>
+        <h2 className="font-semibold text-lg">Card</h2>
         <div className="max-w-xl">
           <DsCard
-            header={<div className="text-base font-semibold">Sample Card</div>}
-            footer={<div className="text-sm text-foreground-muted">Footer note</div>}
+            footer={
+              <div className="text-foreground-muted text-sm">Footer note</div>
+            }
+            header={<div className="font-semibold text-base">Sample Card</div>}
           >
-            <p className="text-sm text-foreground">
+            <p className="text-foreground text-sm">
               This is a simple card body showcasing the design-system styling.
             </p>
           </DsCard>
         </div>
       </section>
 
-      <section className="flex flex-col gap-3 max-w-xl">
-        <h2 className="text-lg font-semibold">Progress</h2>
+      <section className="flex max-w-xl flex-col gap-3">
+        <h2 className="font-semibold text-lg">Progress</h2>
         <DsProgress label="Course completion" value={68} />
       </section>
 
-      <section className="flex flex-col gap-3 max-w-xl">
-        <h2 className="text-lg font-semibold">Badge</h2>
+      <section className="flex max-w-xl flex-col gap-3">
+        <h2 className="font-semibold text-lg">Badge</h2>
         <div className="flex flex-wrap gap-3">
           <DsBadge variant="default">Default</DsBadge>
           <DsBadge variant="completed">Completed</DsBadge>
@@ -67,7 +69,6 @@ export default function UiPreviewPage() {
           <DsBadge variant="default">New</DsBadge>
         </div>
       </section>
-
     </main>
-  )
+  );
 }

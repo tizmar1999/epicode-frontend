@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
-import DsInput from "./ds-input"
+import DsInput from "./ds-input";
 
 const meta: Meta<typeof DsInput> = {
   title: "Design System/Input",
@@ -23,17 +23,17 @@ const meta: Meta<typeof DsInput> = {
     type: { control: "text" },
     disabled: { control: "boolean" },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof DsInput>
+export default meta;
+type Story = StoryObj<typeof DsInput>;
 
 export const Default: Story = {
   args: {
     label: "Email",
     placeholder: "you@example.com",
   },
-}
+};
 
 export const WithHelperText: Story = {
   args: {
@@ -41,7 +41,7 @@ export const WithHelperText: Story = {
     helperText: "Use 3-20 characters.",
     placeholder: "epicode-user",
   },
-}
+};
 
 export const ErrorState: Story = {
   args: {
@@ -51,7 +51,7 @@ export const ErrorState: Story = {
     errorMessage: "Password is too short",
     placeholder: "••••••••",
   },
-}
+};
 
 export const Disabled: Story = {
   args: {
@@ -59,4 +59,4 @@ export const Disabled: Story = {
     placeholder: "you@example.com",
     disabled: true,
   },
-}
+};

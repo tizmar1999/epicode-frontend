@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
-import DsProgress from "./ds-progress"
+import DsProgress from "./ds-progress";
 
 const meta: Meta<typeof DsProgress> = {
   title: "Design System/Progress",
@@ -19,36 +19,36 @@ const meta: Meta<typeof DsProgress> = {
     label: { control: "text" },
     className: { control: false },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof DsProgress>
+export default meta;
+type Story = StoryObj<typeof DsProgress>;
 
 export const Default: Story = {
   args: {
     value: 40,
   },
-}
+};
 
 export const WithLabel: Story = {
   args: {
     value: 70,
     label: "Course completion",
   },
-}
+};
 
 export const EdgeCases: Story = {
   render: () => (
-    <div className="flex flex-col gap-4 w-64">
-      <DsProgress value={0} label="Start" />
-      <DsProgress value={100} label="Complete" />
+    <div className="flex w-64 flex-col gap-4">
+      <DsProgress label="Start" value={0} />
+      <DsProgress label="Complete" value={100} />
     </div>
   ),
-}
+};
 
 export const Midpoint: Story = {
   args: {
     value: 50,
     label: "Halfway there",
   },
-}
+};

@@ -1,39 +1,39 @@
-export type LessonStatus = "completed" | "in-progress" | "locked"
-export type LessonType = "video" | "article" | "quiz"
+export type LessonStatus = "completed" | "in-progress" | "locked";
+export type LessonType = "video" | "article" | "quiz";
 
-export type Lesson = {
-  id: string
-  title: string
-  type: LessonType
-  status: LessonStatus
-  icon?: string
+export interface Lesson {
+  icon?: string;
+  id: string;
+  status: LessonStatus;
+  title: string;
+  type: LessonType;
 }
 
-export type LessonGroup = {
-  id: string
-  title: string // "Video", "Teoria"
-  lessons: Lesson[]
-  icon?: string
+export interface LessonGroup {
+  icon?: string;
+  id: string;
+  lessons: Lesson[];
+  title: string; // "Video", "Teoria"
 }
 
-export type Section = {
-  id: string
-  title: string
-  groups: LessonGroup[]
-  icon?: string
+export interface Section {
+  groups: LessonGroup[];
+  icon?: string;
+  id: string;
+  title: string;
 }
 
-export type Module = {
-  id: string
-  title: string
-  sections: Section[]
-  icon?: string
+export interface Module {
+  icon?: string;
+  id: string;
+  sections: Section[];
+  title: string;
 }
 
-export type Course = {
-  id: string
-  title: string
-  modules: Module[]
+export interface Course {
+  id: string;
+  modules: Module[];
+  title: string;
 }
 
 export const mockCourse: Course = {
@@ -146,4 +146,4 @@ export const mockCourse: Course = {
       sections: [],
     },
   ],
-}
+};

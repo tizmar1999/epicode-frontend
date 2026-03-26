@@ -1,6 +1,7 @@
-import * as React from "react"
-import { Input as UiInput } from "@workspace/ui/components/input"
-import { cn } from "@workspace/ui/lib/utils"
+import { Input as UiInput } from "@workspace/ui/components/input";
+import { cn } from "@workspace/ui/lib/utils";
+import type React from "react";
+import { useId } from "react";
 
 /**
  * Props for DsInput component.
@@ -8,14 +9,14 @@ import { cn } from "@workspace/ui/lib/utils"
  */
 export type DsInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   /** Optional label displayed above the input */
-  label?: string
+  label?: string;
   /** Helper text shown below the input */
-  helperText?: string
+  helperText?: string;
   /** Toggles error styling */
-  error?: boolean
+  error?: boolean;
   /** Error message shown when in error state */
-  errorMessage?: string
-}
+  errorMessage?: string;
+};
 
 /**
  * Form input with label, helper text, and error state.
@@ -30,45 +31,46 @@ function DsInput({
   errorMessage,
   ...props
 }: DsInputProps) {
-  const inputId = id ?? React.useId()
-  const descriptionId = React.useId()
-  const helpText = error ? errorMessage ?? helperText : helperText
+  const generatedId = useId();
+  const inputId = id ?? generatedId;
+  const descriptionId = useId();
+  const helpText = error ? (errorMessage ?? helperText) : helperText;
 
   return (
     <div className="flex w-full flex-col gap-2">
       {label ? (
         <label
+          className="font-medium text-foreground text-sm"
           htmlFor={inputId}
-          className="text-sm font-medium text-foreground"
         >
           {label}
         </label>
       ) : null}
       <UiInput
-        id={inputId}
-        aria-invalid={error || undefined}
         aria-describedby={helpText ? descriptionId : undefined}
+        aria-invalid={error || undefined}
         className={cn(
-          "bg-background border border-border text-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:border-primary",
-          error && "border-red-500 focus:ring-red-500 focus:border-red-500",
+          "border border-border bg-background text-foreground focus:border-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background",
+          error && "border-red-500 focus:border-red-500 focus:ring-red-500",
           className
         )}
+        id={inputId}
         {...props}
       />
       {helpText ? (
         <p
-          id={descriptionId}
           className={cn(
-            "text-xs text-foreground-muted",
+            "text-foreground-muted text-xs",
             error && "text-red-500"
           )}
+          id={descriptionId}
         >
           {helpText}
         </p>
       ) : null}
     </div>
-  )
+  );
 }
 
-export { DsInput }
-export default DsInput
+export { DsInput };
+export default DsInput;

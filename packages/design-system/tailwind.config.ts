@@ -2,13 +2,11 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: "class",
-  content: [
-    "./src/**/*.{ts,tsx}",
-  ],
+  content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        primary: {DEFAULT: "var(--color-primary)",},
+        primary: { DEFAULT: "var(--color-primary)" },
         background: {
           DEFAULT: "var(--color-background)",
           secondary: "var(--color-background-secondary)",

@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 
-import DsCard from "./ds-card"
+import DsCard from "./ds-card";
 
 const meta: Meta<typeof DsCard> = {
   title: "Design System/Card",
@@ -23,16 +23,16 @@ const meta: Meta<typeof DsCard> = {
     footer: { control: "text" },
     children: { control: "text" },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof DsCard>
+export default meta;
+type Story = StoryObj<typeof DsCard>;
 
 export const Default: Story = {
   args: {
-    children: <p className="text-sm text-foreground">Simple card content</p>,
+    children: <p className="text-foreground text-sm">Simple card content</p>,
   },
-}
+};
 
 export const WithHeaderFooter: Story = {
   args: {
@@ -40,7 +40,7 @@ export const WithHeaderFooter: Story = {
     footer: "Footer note",
     children: "Body content goes here.",
   },
-}
+};
 
 export const Elevated: Story = {
   args: {
@@ -48,7 +48,7 @@ export const Elevated: Story = {
     header: "Elevated Card",
     children: "With subtle shadow.",
   },
-}
+};
 
 export const LongContent: Story = {
   args: {
@@ -57,4 +57,4 @@ export const LongContent: Story = {
       "This card demonstrates longer content to check padding and spacing across multiple lines. It should remain readable and consistent.",
     footer: "Updated 2 hours ago",
   },
-}
+};

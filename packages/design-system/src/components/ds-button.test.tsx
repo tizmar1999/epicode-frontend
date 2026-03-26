@@ -1,38 +1,38 @@
-import { render, screen, fireEvent } from "@testing-library/react"
-import { describe, it, expect, vi } from "vitest"
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 
-import DsButton from "./ds-button"
+import DsButton from "./ds-button";
 
 describe("DsButton", () => {
   it("renders children correctly", () => {
-    render(<DsButton>Click me</DsButton>)
+    render(<DsButton>Click me</DsButton>);
 
-    expect(screen.getByText("Click me")).toBeInTheDocument()
-  })
+    expect(screen.getByText("Click me")).toBeInTheDocument();
+  });
 
   it("calls onClick when clicked", () => {
-    const handleClick = vi.fn()
+    const handleClick = vi.fn();
 
-    render(<DsButton onClick={handleClick}>Click</DsButton>)
+    render(<DsButton onClick={handleClick}>Click</DsButton>);
 
-    fireEvent.click(screen.getByText("Click"))
+    fireEvent.click(screen.getByText("Click"));
 
-    expect(handleClick).toHaveBeenCalledTimes(1)
-  })
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
 
   it("is disabled when loading", () => {
-    render(<DsButton isLoading>Loading</DsButton>)
+    render(<DsButton isLoading>Loading</DsButton>);
 
-    const button = screen.getByRole("button")
+    const button = screen.getByRole("button");
 
-    expect(button).toBeDisabled()
-  })
+    expect(button).toBeDisabled();
+  });
 
   it("shows loading spinner when isLoading is true", () => {
-    render(<DsButton isLoading>Loading</DsButton>)
+    render(<DsButton isLoading>Loading</DsButton>);
 
-    const spinner = document.querySelector(".animate-spin")
+    const spinner = document.querySelector(".animate-spin");
 
-    expect(spinner).toBeInTheDocument()
-  })
-})
+    expect(spinner).toBeInTheDocument();
+  });
+});
