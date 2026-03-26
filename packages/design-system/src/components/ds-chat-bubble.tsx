@@ -2,11 +2,19 @@ import * as React from "react"
 
 import { cn } from "@workspace/ui/lib/utils"
 
+/**
+ * Props for DsChatBubble component.
+ */
 type DsChatBubbleProps = {
+  /** Choose the alignment and color scheme */
   variant: "user" | "assistant"
+  /** Message content */
   children: React.ReactNode
 }
 
+/**
+ * Chat message bubble supporting user (right) and assistant (left) variants.
+ */
 export function DsChatBubble({ variant, children }: DsChatBubbleProps) {
   const isUser = variant === "user"
 

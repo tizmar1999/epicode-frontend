@@ -28,13 +28,24 @@ const dsButtonVariants = cva(
   }
 )
 
+/**
+ * Props for DsButton component
+ * Reusable button with variants, sizes, and loading state.
+ */
 type DsButtonProps = Omit<React.ComponentProps<typeof UiButton>, "variant" | "size"> &
   VariantProps<typeof dsButtonVariants> & {
+    /** Shows loading spinner and disables interaction */
     isLoading?: boolean
+    /** Optional icon on the left */
     leftIcon?: React.ReactNode
+    /** Optional icon on the right */
     rightIcon?: React.ReactNode
   }
 
+/**
+ * Reusable button with variants, sizes, and loading state.
+ * Use for primary actions, secondary actions, and outline styles across the app.
+ */
 function DsButton({
   className,
   children,

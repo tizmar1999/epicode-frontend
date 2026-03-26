@@ -3,12 +3,22 @@ import * as React from "react"
 import { Progress as UiProgress } from "@workspace/ui/components/progress"
 import { cn } from "@workspace/ui/lib/utils"
 
+/**
+ * Props for DsProgress component.
+ */
 type DsProgressProps = {
+  /** Progress value from 0 to 100 */
   value: number
+  /** Optional label displayed above the bar */
   label?: string
+  /** Optional className for custom layout control */
   className?: string
 }
 
+/**
+ * Progress bar with optional label and percentage display.
+ * Use to visualize completion for modules, lessons, or tasks.
+ */
 function DsProgress({ value, label, className }: DsProgressProps) {
   const clamped = Math.max(0, Math.min(100, Math.round(value ?? 0)))
 

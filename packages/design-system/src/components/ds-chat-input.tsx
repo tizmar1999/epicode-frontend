@@ -4,11 +4,18 @@ import { cn } from "@workspace/ui/lib/utils"
 import DsButton from "./ds-button"
 
 type DsChatInputProps = {
+  /** Placeholder text for the textarea */
   placeholder?: string
+  /** Callback fired when sending a non-empty value */
   onSend?: (value: string) => void
+  /** Optional container className */
   className?: string
 }
 
+/**
+ * Input area for sending chat messages with validation.
+ * Prevents empty sends and clears after submit.
+ */
 export function DsChatInput({ placeholder, onSend, className }: DsChatInputProps) {
   const [value, setValue] = React.useState("")
 

@@ -26,12 +26,21 @@ const cardVariants = cva(
   }
 )
 
+/**
+ * Props for DsCard component.
+ */
 type DsCardProps = React.ComponentProps<typeof UiCard> &
   VariantProps<typeof cardVariants> & {
+    /** Optional header content */
     header?: React.ReactNode
+    /** Optional footer content */
     footer?: React.ReactNode
   }
 
+/**
+ * Container component for grouping content with optional header and footer.
+ * Use for wrapping course content, stats, or cards in the LMS UI.
+ */
 function DsCard({
   className,
   children,

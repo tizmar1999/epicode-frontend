@@ -5,33 +5,56 @@ import { cn } from "@workspace/ui/lib/utils"
 import DsBadge from "./ds-badge"
 import { DsTreeItem } from "./ds-tree-item"
 
+/** Lesson node definition used by DsSidebar */
 type Lesson = {
+  /** Unique identifier for the lesson */
   id: string
+  /** Lesson title */
   title: string
+  /** Status indicator */
   status: "completed" | "in-progress" | "locked"
 }
 
-type Section = {
-  id: string
-  title: string
-  groups: LessonGroup[]
-}
-
+/** Group of lessons within a section */
 type LessonGroup = {
+  /** Unique identifier for the group */
   id: string
+  /** Group title (e.g., Video, Teoria) */
   title: string
+  /** Lessons contained in this group */
   lessons: Lesson[]
 }
 
-type Module = {
+/** Section inside a module containing lesson groups */
+type Section = {
+  /** Unique identifier for the section */
   id: string
+  /** Section title */
   title: string
+  /** Groups within the section */
+  groups: LessonGroup[]
+}
+
+/** Module grouping sections */
+type Module = {
+  /** Unique identifier for the module */
+  id: string
+  /** Module title */
+  title: string
+  /** Sections within the module */
   sections: Section[]
 }
 
+/**
+ * Props for DsSidebar component.
+ * Sidebar navigation component for rendering course/module/lesson hierarchy.
+ */
 type DsSidebarProps = {
+  /** Modules to render in the sidebar */
   modules: Module[]
+  /** Currently selected lesson id */
   selectedLessonId: string | null
+  /** Callback when a lesson is selected */
   onSelectLesson: (lessonId: string) => void
 }
 
@@ -54,6 +77,10 @@ function AnimatedWrapper({
   )
 }
 
+/**
+ * Sidebar navigation component for rendering course/module/lesson hierarchy.
+ * Handles its own expand/collapse state and supports badges on lessons.
+ */
 export function DsSidebar({
   modules,
   selectedLessonId,

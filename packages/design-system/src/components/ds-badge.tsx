@@ -26,6 +26,9 @@ const dsBadgeVariants = cva(
 type DsBadgeProps = React.ComponentProps<typeof UiBadge> &
   VariantProps<typeof dsBadgeVariants>
 
+/**
+ * Small status indicator for states like completed, in-progress, or locked.
+ */
 function DsBadge({ className, variant, ...props }: DsBadgeProps) {
   return (
     <UiBadge

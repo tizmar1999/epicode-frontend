@@ -2,13 +2,25 @@ import * as React from "react"
 import { Input as UiInput } from "@workspace/ui/components/input"
 import { cn } from "@workspace/ui/lib/utils"
 
+/**
+ * Props for DsInput component.
+ * Form input with label, helper text, and error state.
+ */
 type DsInputProps = React.ComponentProps<typeof UiInput> & {
+  /** Optional label displayed above the input */
   label?: string
+  /** Helper text shown below the input */
   helperText?: string
+  /** Toggles error styling */
   error?: boolean
+  /** Error message shown when in error state */
   errorMessage?: string
 }
 
+/**
+ * Form input with label, helper text, and error state.
+ * Use for text fields across the LMS with consistent styling.
+ */
 function DsInput({
   className,
   id,

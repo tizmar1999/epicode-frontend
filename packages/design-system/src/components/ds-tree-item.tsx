@@ -1,15 +1,28 @@
 import * as React from "react"
 import { cn } from "@workspace/ui/lib/utils"
 
+/**
+ * Props for DsTreeItem component.
+ */
 type DsTreeItemProps = {
+  /** Display label for the tree node */
   label: string
+  /** Nesting level used for indentation */
   level?: number
+  /** Highlights the item as active/selected */
   isActive?: boolean
+  /** Click handler, typically toggles or selects the node */
   onClick?: () => void
+  /** Optional content aligned to the right (e.g., badges) */
   rightSlot?: React.ReactNode
+  /** Nested children items */
   children?: React.ReactNode
 }
 
+/**
+ * Recursive tree item for hierarchical navigation structures.
+ * Provides indentation, active state, and optional right slot content.
+ */
 export function DsTreeItem({
   label,
   level = 0,
