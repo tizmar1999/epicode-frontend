@@ -10,12 +10,12 @@ It demonstrates component abstraction, reusability, and scalable frontend archit
 
 ## Tech Stack
 
-* Next.js (App Router)
-* Tailwind CSS
-* Storybook
-* Vitest + React Testing Library
-* Turborepo
-* TypeScript
+- Next.js (App Router)
+- Tailwind CSS
+- Storybook
+- Vitest + React Testing Library
+- Turborepo
+- TypeScript
 
 ---
 
@@ -23,20 +23,20 @@ It demonstrates component abstraction, reusability, and scalable frontend archit
 
 The project follows a layered architecture:
 
-* `packages/ui`: low-level UI primitives
-* `packages/design-system`: reusable and styled components (DsButton, DsSidebar, etc.)
-* `apps/web`: application layer consuming the design system
-* `apps/storybook`: component documentation and preview
+- `packages/ui`: low-level UI primitives
+- `packages/design-system`: reusable and styled components (DsButton, DsSidebar, etc.)
+- `apps/web`: application layer consuming the design system
+- `apps/storybook`: component documentation and preview
 
 ---
 
 ## Features
 
-* Reusable design system components
-* Hierarchical sidebar with nested navigation
-* Chat interface components
-* Storybook documentation with autodocs
-* Component testing with Vitest
+- Reusable design system components
+- Hierarchical sidebar with nested navigation
+- Chat interface components
+- Storybook documentation with autodocs
+- Component testing with Vitest
 
 ---
 
@@ -82,8 +82,8 @@ pnpm turbo run lint
 
 ## Notes
 
-* The design system abstracts UI primitives to ensure consistency and reusability.
-* Storybook is used as a documentation tool for components.
-* Testing focuses on component behavior and interaction.
+- The design system abstracts UI primitives to ensure consistency and reusability.
+- Storybook is used as a documentation tool for components.
+- Testing focuses on component behavior and interaction.
 
 ---

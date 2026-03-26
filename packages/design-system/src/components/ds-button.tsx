@@ -24,7 +24,7 @@ const dsButtonVariants = cva(
       variant: "primary",
       size: "md",
     },
-  }
+  },
 );
 
 /**

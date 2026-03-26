@@ -52,7 +52,7 @@ function DsInput({
         className={cn(
           "border border-border bg-background text-foreground focus:border-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background",
           error && "border-red-500 focus:border-red-500 focus:ring-red-500",
-          className
+          className,
         )}
         id={inputId}
         {...props}
@@ -61,7 +61,7 @@ function DsInput({
         <p
           className={cn(
             "text-foreground-muted text-xs",
-            error && "text-red-500"
+            error && "text-red-500",
           )}
           id={descriptionId}
         >

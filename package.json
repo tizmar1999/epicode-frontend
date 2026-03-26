@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
+    "test": "turbo run test",
     "dev": "turbo dev",
+    "format:check": "turbo run format:check",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check": "ultracite check",

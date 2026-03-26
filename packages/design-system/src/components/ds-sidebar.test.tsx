@@ -36,7 +36,7 @@ describe("DsSidebar", () => {
         modules={mockModules}
         onSelectLesson={() => {}}
         selectedLessonId={null}
-      />
+      />,
     );
 
     expect(screen.getByText("Module 1")).toBeInTheDocument();
@@ -48,7 +48,7 @@ describe("DsSidebar", () => {
         modules={mockModules}
         onSelectLesson={() => {}}
         selectedLessonId={null}
-      />
+      />,
     );
 
     expect(screen.getByText("Section 1")).toBeInTheDocument();
@@ -60,7 +60,7 @@ describe("DsSidebar", () => {
         modules={mockModules}
         onSelectLesson={() => {}}
         selectedLessonId={null}
-      />
+      />,
     );
 
     expect(screen.getByText("Video")).toBeInTheDocument();
@@ -72,7 +72,7 @@ describe("DsSidebar", () => {
         modules={mockModules}
         onSelectLesson={() => {}}
         selectedLessonId={null}
-      />
+      />,
     );
 
     expect(screen.getByText("Lesson 1")).toBeInTheDocument();
@@ -86,7 +86,7 @@ describe("DsSidebar", () => {
         modules={mockModules}
         onSelectLesson={handleSelect}
         selectedLessonId={null}
-      />
+      />,
     );
 
     fireEvent.click(screen.getByText("Lesson 1"));
