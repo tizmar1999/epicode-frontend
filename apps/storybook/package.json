@@ -17,7 +17,6 @@
   "dependencies": {
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "@workspace/design-system": "workspace:*",
-    "next-themes": "workspace:*"
+    "@workspace/design-system": "workspace:*"
   }
 }
