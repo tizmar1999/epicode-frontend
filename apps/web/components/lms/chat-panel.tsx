@@ -1,29 +1,34 @@
-import DsChatBubble from "@workspace/design-system/components/ds-chat-bubble"
-import DsChatInput from "@workspace/design-system/components/ds-chat-input"
-import { Users, ChevronUp } from "lucide-react"
+type ChatPanelProps = {
+  onClose?: () => void
+}
 
-export function ChatPanel() {
-  function handleSend(val: string) {
-    console.log("Send message:", val)
-  }
-
+export function ChatPanel({ onClose }: ChatPanelProps) {
   return (
-    <div className="flex h-full flex-col bg-background-secondary">
-      <div className="flex items-center gap-2 border-b border-border px-4 py-4">
-        <Users className="w-4 h-4 text-[#c03ad8]" />
-        <span className="text-sm font-semibold">Comments</span>
-        <ChevronUp className="w-3 h-3 text-[#c03ad8] ml-auto" />
+    <div className="flex h-full flex-col bg-[#0c0d17]">
+      <div className="flex items-center gap-2 px-4 py-4 border-b border-[#1b1e2d]">
+        <i className="fas fa-users text-[#c03ad8] text-sm" />
+        <div className="text-sm font-semibold">Comments</div>
+        <button
+          type="button"
+          className="ml-auto text-[#c03ad8]"
+          onClick={onClose}
+        >
+          <i className="fas fa-chevron-up text-xs" />
+        </button>
       </div>
-
-      <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3">
-        <DsChatBubble variant="user">How do I approach this lesson?</DsChatBubble>
-        <DsChatBubble variant="assistant">
-          Start by reviewing the video and then try the quiz.
-        </DsChatBubble>
+      <div className="p-4 flex-1">
+        <textarea
+          className="w-full border border-[#2a2e45] rounded-lg h-36 bg-transparent text-sm text-[#d8dbe6] p-3 focus:outline-none"
+          placeholder="Leave a comment..."
+        />
       </div>
-
-      <div className="border-t border-border px-4 py-3">
-        <DsChatInput placeholder="Leave a comment..." onSend={handleSend} />
+      <div className="px-4 pb-6">
+        <button
+          className="w-full bg-[#2a2e45] text-[#9aa0b4] py-2 rounded-md text-sm cursor-not-allowed"
+          disabled
+        >
+          Submit
+        </button>
       </div>
     </div>
   )

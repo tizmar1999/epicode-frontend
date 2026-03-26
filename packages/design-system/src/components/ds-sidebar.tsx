@@ -1,17 +1,3 @@
-import * as React from "react"
-
-import { cn } from "@workspace/ui/lib/utils"
-import {
-  Book,
-  FileText,
-  Play,
-  PlayCircle,
-  Box,
-  Folder,
-  Square,
-} from "lucide-react"
-
-import DsBadge from "./ds-badge"
 import { DsTreeItem } from "./ds-tree-item"
 
 /** Lesson node definition used by DsSidebar */
@@ -23,7 +9,7 @@ export type DsSidebarLesson = {
   /** Status indicator */
   status: "completed" | "in-progress" | "locked"
   /** Optional leading icon */
-  icon?: React.ReactNode
+  icon?: string
 }
 
 /** Group of lessons within a section */
@@ -35,7 +21,7 @@ export type DsSidebarLessonGroup = {
   /** Lessons contained in this group */
   lessons: DsSidebarLesson[]
   /** Optional leading icon */
-  icon?: React.ReactNode
+  icon?: string
 }
 
 /** Section inside a module containing lesson groups */
@@ -47,7 +33,7 @@ export type DsSidebarSection = {
   /** Groups within the section */
   groups: DsSidebarLessonGroup[]
   /** Optional leading icon */
-  icon?: React.ReactNode
+  icon?: string
 }
 
 /** Module grouping sections */
@@ -59,7 +45,7 @@ export type DsSidebarModule = {
   /** Sections within the module */
   sections: DsSidebarSection[]
   /** Optional leading icon */
-  icon?: React.ReactNode
+  icon?: string
 }
 
 /**
@@ -75,25 +61,6 @@ export type DsSidebarProps = {
   onSelectLesson: (lessonId: string) => void
 }
 
-function AnimatedWrapper({
-  isOpen,
-  children,
-}: {
-  isOpen: boolean
-  children: React.ReactNode
-}) {
-  return (
-    <div
-      className={cn(
-        "overflow-hidden transition-all duration-300",
-        isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-      )}
-    >
-      {children}
-    </div>
-  )
-}
-
 /**
  * Sidebar navigation component for rendering course/module/lesson hierarchy.
  * Handles its own expand/collapse state and supports badges on lessons.
@@ -103,78 +70,40 @@ export function DsSidebar({
   selectedLessonId,
   onSelectLesson,
 }: DsSidebarProps) {
-  const [openItems, setOpenItems] = React.useState<Record<string, boolean>>({})
-
-  function toggleItem(id: string) {
-    setOpenItems((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }))
-  }
-
-  const iconMap: Record<string, React.ReactNode> = {
-    cube: <Box className="w-3.5 h-3.5 text-foreground-muted" />,
-    book: <Book className="w-3.5 h-3.5 text-foreground-muted" />,
-    play: <Play className="w-3.5 h-3.5 text-foreground-muted" />,
-    "play-circle": <PlayCircle className="w-3.5 h-3.5 text-foreground-muted" />,
-    file: <FileText className="w-3.5 h-3.5 text-foreground-muted" />,
-    folder: <Folder className="w-3.5 h-3.5 text-foreground-muted" />,
-  }
-
-  const resolveIcon = (key?: string) => iconMap[key ?? ""] ?? <Square className="w-3.5 h-3.5 text-foreground-muted" />
-
   return (
     <div className="flex flex-col">
       {modules.map((mod) => (
-        <div key={mod.id} className="mt-4">
-          <DsTreeItem
-            label={mod.title}
-            level={0}
-            icon={resolveIcon(mod.icon)}
-            isOpen={!!openItems[mod.id]}
-            onClick={() => toggleItem(mod.id)}
-          >
-            <AnimatedWrapper isOpen={!!openItems[mod.id]}>
-              {mod.sections.map((section) => (
-                <DsTreeItem
-                  key={section.id}
-                  label={section.title}
-                  level={1}
-                  icon={resolveIcon(section.icon)}
-                  isOpen={!!openItems[section.id]}
-                  onClick={() => toggleItem(section.id)}
-                >
-                  <AnimatedWrapper isOpen={!!openItems[section.id]}>
-                    {section.groups.map((group) => (
+        <div key={mod.id} className="mt-2">
+          <DsTreeItem label={mod.title} level={0} icon={mod.icon ?? "cube"}>
+            {mod.sections.map((section) => (
+              <DsTreeItem
+                key={section.id}
+                label={section.title}
+                level={1}
+                icon={section.icon ?? "book"}
+              >
+                {section.groups.map((group) => (
+                  <DsTreeItem
+                    key={group.id}
+                    label={group.title}
+                    level={2}
+                    icon={group.icon ?? "folder"}
+                  >
+                    {group.lessons.map((lesson) => (
                       <DsTreeItem
-                        key={group.id}
-                        label={group.title}
-                        level={2}
-                        icon={resolveIcon(group.icon)}
-                        isOpen={!!openItems[group.id]}
-                        onClick={() => toggleItem(group.id)}
-                      >
-                        <AnimatedWrapper isOpen={!!openItems[group.id]}>
-                          {group.lessons.map((lesson) => (
-                            <DsTreeItem
-                              key={lesson.id}
-                              label={lesson.title}
-                              level={3}
-                              isActive={lesson.id === selectedLessonId}
-                              icon={resolveIcon(lesson.icon)}
-                              onClick={() => onSelectLesson(lesson.id)}
-                              rightSlot={
-                                <DsBadge variant={lesson.status}>{lesson.status}</DsBadge>
-                              }
-                            />
-                          ))}
-                        </AnimatedWrapper>
-                      </DsTreeItem>
+                        key={lesson.id}
+                        label={lesson.title}
+                        level={3}
+                        isActive={lesson.id === selectedLessonId}
+                        icon={lesson.icon ?? "file"}
+                        onClick={() => onSelectLesson(lesson.id)}
+                        defaultOpen
+                      />
                     ))}
-                  </AnimatedWrapper>
-                </DsTreeItem>
-              ))}
-            </AnimatedWrapper>
+                  </DsTreeItem>
+                ))}
+              </DsTreeItem>
+            ))}
           </DsTreeItem>
         </div>
       ))}

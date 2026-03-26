@@ -1,4 +1,5 @@
 import * as React from "react"
+
 import { cn } from "@workspace/ui/lib/utils"
 
 type DsTreeItemProps = {
@@ -8,6 +9,8 @@ type DsTreeItemProps = {
   onClick?: () => void
   children?: React.ReactNode
   icon?: string
+  defaultOpen?: boolean
+  rightSlot?: React.ReactNode
 }
 
 export function DsTreeItem({
@@ -17,8 +20,10 @@ export function DsTreeItem({
   onClick,
   children,
   icon = "cube",
+  defaultOpen = true,
+  rightSlot,
 }: DsTreeItemProps) {
-  const [isOpen, setIsOpen] = React.useState(true)
+  const [isOpen, setIsOpen] = React.useState(defaultOpen)
   const hasChildren = Boolean(children)
 
   function handleClick() {
@@ -28,38 +33,32 @@ export function DsTreeItem({
 
   return (
     <div className="mb-1">
-      <div
+      <button
+        type="button"
         onClick={handleClick}
         style={{ paddingLeft: `${level * 12}px` }}
         className={cn(
-          "flex items-center gap-2 py-1.5 px-2 rounded-md text-sm cursor-pointer transition-colors",
+          "flex w-full items-center gap-2 py-2 px-3 rounded-md text-sm cursor-pointer transition-colors",
           isActive
-            ? "bg-[var(--color-active)] text-[var(--color-foreground)]"
-            : "text-[var(--color-foreground-muted)] hover:bg-[#1a1d2b]"
+            ? "bg-[#3a2a59] text-[#d8dbe6]"
+            : "text-[#9aa0b4] hover:bg-[#1a1d2b]"
         )}
       >
-        {/* ICON */}
-        <i className={`fas fa-${icon} text-xs`} />
-
-        {/* LABEL */}
-        <span className="truncate">{label}</span>
-
-        {/* CHEVRON */}
+        <i className={`fas fa-${icon} text-[11px] text-[#9aa0b4]`} />
+        <span className="truncate text-left text-[#d8dbe6]">{label}</span>
+        {rightSlot && <div className="ml-auto mr-2 text-xs">{rightSlot}</div>}
         {hasChildren && (
           <i
             className={cn(
-              "fas text-[10px] ml-auto transition-transform",
+              "fas text-[10px] ml-auto text-[#5c5f73] transition-transform",
               isOpen ? "fa-chevron-down" : "fa-chevron-right"
             )}
           />
         )}
-      </div>
+      </button>
 
-      {/* CHILDREN */}
       {hasChildren && isOpen && (
-        <div className="ml-3 border-l border-[var(--color-border)] pl-2">
-          {children}
-        </div>
+        <div className="ml-2 border-l border-[#242739] pl-2">{children}</div>
       )}
     </div>
   )

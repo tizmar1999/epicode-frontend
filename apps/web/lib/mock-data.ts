@@ -41,6 +41,12 @@ export const mockCourse: Course = {
   title: "Data Analytics & AI",
   modules: [
     {
+      id: "welcome",
+      title: "Welcome: Data Analyst",
+      icon: "cube",
+      sections: [],
+    },
+    {
       id: "mod-0",
       title: "M0. Fundamentals",
       icon: "cube",
@@ -105,129 +111,39 @@ export const mockCourse: Course = {
     },
     {
       id: "mod-1",
-      title: "M1. Advanced Topics",
+      title: "M1. Excel: febbraio 9 - marzo 13",
       icon: "cube",
-      sections: [
-        {
-          id: "sec-2",
-          title: "Advanced Data Analysis",
-          icon: "book",
-          groups: [
-            {
-              id: "group-3",
-              title: "Video",
-              icon: "play-circle",
-              lessons: [
-                {
-                  id: "l-6",
-                  title: "Advanced Analytics (1)",
-                  type: "video",
-                  status: "completed",
-                  icon: "play",
-                },
-                {
-                  id: "l-7",
-                  title: "Advanced Analytics (2)",
-                  type: "video",
-                  status: "completed",
-                  icon: "play",
-                },
-                {
-                  id: "l-8",
-                  title: "Machine Learning Basics",
-                  type: "video",
-                  status: "in-progress",
-                  icon: "play",
-                },
-                {
-                  id: "l-9",
-                  title: "Deep Learning Fundamentals",
-                  type: "video",
-                  status: "locked",
-                  icon: "play",
-                },
-              ],
-            },
-            {
-              id: "group-4",
-              title: "Teoria",
-              icon: "book",
-              lessons: [
-                {
-                  id: "l-10",
-                  title: "Advanced Datasets",
-                  type: "article",
-                  status: "locked",
-                  icon: "file",
-                },
-              ],
-            },
-          ],
-        },
-      ],
+      sections: [],
     },
     {
       id: "mod-2",
-      title: "M2. Data Visualization",
+      title: "M2: marzo 16 - aprile 17",
       icon: "cube",
-      sections: [
-        {
-          id: "sec-3",
-          title: "Data Visualization Techniques",
-          icon: "book",
-          groups: [
-            {
-              id: "group-5",
-              title: "Video",
-              icon: "play-circle",
-              lessons: [
-                {
-                  id: "l-11",
-                  title: "Visualization Tools (1)",
-                  type: "video",
-                  status: "completed",
-                  icon: "play",
-                },
-                {
-                  id: "l-12",
-                  title: "Visualization Tools (2)",
-                  type: "video",
-                  status: "completed",
-                  icon: "play",
-                },
-                {
-                  id: "l-13",
-                  title: "Interactive Dashboards",
-                  type: "video",
-                  status: "in-progress",
-                  icon: "play",
-                },
-                {
-                  id: "l-14",
-                  title: "Data Storytelling",
-                  type: "video",
-                  status: "locked",
-                  icon: "play",
-                },
-              ],
-            },
-            {
-              id: "group-6",
-              title: "Teoria",
-              icon: "book",
-              lessons: [
-                {
-                  id: "l-15",
-                  title: "Visualization Principles",
-                  type: "article",
-                  status: "locked",
-                  icon: "file",
-                },
-              ],
-            },
-          ],
-        },
-      ]
-    }
+      sections: [],
+    },
+    {
+      id: "mod-3",
+      title: "M3. aprile 20 - maggio 22",
+      icon: "cube",
+      sections: [],
+    },
+    {
+      id: "mod-4",
+      title: "M4. Google Looker Studio: maggio...",
+      icon: "cube",
+      sections: [],
+    },
+    {
+      id: "mod-5",
+      title: "M5. Power BI: giugno 15 - luglio 17",
+      icon: "cube",
+      sections: [],
+    },
+    {
+      id: "mod-6",
+      title: "Capstone Project & Career Training",
+      icon: "cube",
+      sections: [],
+    },
   ],
 }

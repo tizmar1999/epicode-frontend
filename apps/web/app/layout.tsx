@@ -19,7 +19,7 @@ export default function RootLayout({
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
       />
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased bg-[#0b0c15] text-white`}>
         <Providers>{children}</Providers>
       </body>
     </html>

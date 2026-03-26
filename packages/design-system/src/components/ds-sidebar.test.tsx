@@ -51,8 +51,6 @@ describe("DsSidebar", () => {
       />
     )
 
-    fireEvent.click(screen.getByText("Module 1"))
-
     expect(screen.getByText("Section 1")).toBeInTheDocument()
   })
 
@@ -65,9 +63,6 @@ describe("DsSidebar", () => {
       />
     )
 
-    fireEvent.click(screen.getByText("Module 1"))
-    fireEvent.click(screen.getByText("Section 1"))
-
     expect(screen.getByText("Video")).toBeInTheDocument()
   })
 
@@ -79,10 +74,6 @@ describe("DsSidebar", () => {
         onSelectLesson={() => {}}
       />
     )
-
-    fireEvent.click(screen.getByText("Module 1"))
-    fireEvent.click(screen.getByText("Section 1"))
-    fireEvent.click(screen.getByText("Video"))
 
     expect(screen.getByText("Lesson 1")).toBeInTheDocument()
   })
@@ -98,9 +89,6 @@ describe("DsSidebar", () => {
       />
     )
 
-    fireEvent.click(screen.getByText("Module 1"))
-    fireEvent.click(screen.getByText("Section 1"))
-    fireEvent.click(screen.getByText("Video"))
     fireEvent.click(screen.getByText("Lesson 1"))
 
     expect(handleSelect).toHaveBeenCalledWith("l-1")
