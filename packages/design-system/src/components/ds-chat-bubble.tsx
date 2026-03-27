@@ -20,12 +20,14 @@ export function DsChatBubble({ variant, children }: DsChatBubbleProps) {
   return (
     <div
       className={cn("flex w-full", isUser ? "justify-end" : "justify-start")}
+      data-variant={variant}
     >
       <div
         className={cn(
           "max-w-[70%] rounded-xl px-4 py-2.5 text-sm",
           isUser ? "bg-primary text-white" : "bg-muted text-foreground"
         )}
+        data-testid="bubble"
       >
         {children}
       </div>
