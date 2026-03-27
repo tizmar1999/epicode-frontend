@@ -2,11 +2,15 @@
   "extends": "@workspace/typescript-config/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "incremental": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "jsx": "react-jsx",
-    "types": ["vitest", "vite/client"],
+    "types": ["vitest"],
     "paths": {
       "@workspace/design-system/*": ["./src/*"]
-    }
+    },
+    "composite": true
   },
   "include": ["src/**/*", "tailwind.config.ts", "vitest.setup.ts"],
   "exclude": ["node_modules", "dist"]

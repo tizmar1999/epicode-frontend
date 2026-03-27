@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 import { DsSidebar } from "./ds-sidebar";
+import type { DsSidebarModule } from "./ds-sidebar";
 
 const mockModules = [
   {
@@ -27,7 +28,7 @@ const mockModules = [
       },
     ],
   },
-];
+] satisfies DsSidebarModule[];
 
 describe("DsSidebar", () => {
   it("renders module title", () => {

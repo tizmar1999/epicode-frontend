@@ -2,11 +2,15 @@
   "extends": "@workspace/typescript-config/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "paths": {
       "@workspace/ui/*": ["./src/*"]
     },
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "composite": true,
+    "incremental": true
   },
-  "include": ["."],
+  "include": ["src/**/*", "tailwind.config.ts"],
   "exclude": ["node_modules", "dist"]
 }
