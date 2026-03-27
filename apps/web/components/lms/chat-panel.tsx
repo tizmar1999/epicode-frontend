@@ -1,13 +1,54 @@
+import { useMemo, useState } from "react";
+
+import DsChatBubble from "@workspace/design-system/components/ds-chat-bubble";
+import DsChatInput from "@workspace/design-system/components/ds-chat-input";
+
 interface ChatPanelProps {
   onClose?: () => void;
 }
 
+type ChatMessage = {
+  id: string;
+  role: "user" | "assistant";
+  text: string;
+};
+
 export function ChatPanel({ onClose }: ChatPanelProps) {
+  const initialMessages = useMemo<ChatMessage[]>(
+    () => [
+      {
+        id: "m-1",
+        role: "assistant",
+        text: "Ciao! Posso aiutarti a ripassare la lezione \"Dati 1\" o vuoi un breve riassunto?",
+      },
+      {
+        id: "m-2",
+        role: "user",
+        text: "Fammi un riassunto veloce, grazie.",
+      },
+      {
+        id: "m-3",
+        role: "assistant",
+        text: "Nella lezione trovi le basi di data ingestion, pulizia e una panoramica su modelli lineari. Vuoi un esempio pratico o materiale aggiuntivo?",
+      },
+    ],
+    []
+  );
+
+  const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
+
+  function handleSend(value: string) {
+    setMessages((prev) => [
+      ...prev,
+      { id: `m-${Date.now()}`, role: "user", text: value },
+    ]);
+  }
+
   return (
     <div className="flex h-full flex-col bg-[#0c0d17]">
-      <div className="flex items-center gap-2 border-[#1b1e2d] border-b px-4 py-4">
-        <i className="fas fa-users text-[#c03ad8] text-sm" />
-        <div className="font-semibold text-sm">Comments</div>
+      <div className="flex items-center gap-2 border-b border-[#1b1e2d] px-4 py-4">
+        <i className="fas fa-robot text-[#c03ad8] text-sm" />
+        <div className="font-semibold text-sm">AI Tutor</div>
         <button
           className="ml-auto text-[#c03ad8]"
           onClick={onClose}
@@ -16,20 +57,21 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
           <i className="fas fa-chevron-up text-xs" />
         </button>
       </div>
-      <div className="flex-1 p-4">
-        <textarea
-          className="h-36 w-full rounded-lg border border-[#2a2e45] bg-transparent p-3 text-[#d8dbe6] text-sm focus:outline-none"
-          placeholder="Leave a comment..."
-        />
+
+      <div className="scrollbar-hide flex-1 space-y-3 overflow-y-auto px-4 py-4">
+        {messages.map((message) => (
+          <DsChatBubble key={message.id} variant={message.role}>
+            {message.text}
+          </DsChatBubble>
+        ))}
       </div>
-      <div className="px-4 pb-6">
-        <button
-          className="w-full cursor-not-allowed rounded-md bg-[#2a2e45] py-2 text-[#9aa0b4] text-sm"
-          disabled
-          type="button"
-        >
-          Submit
-        </button>
+
+      <div className="border-t border-[#1b1e2d] px-4 py-4">
+        <DsChatInput
+          className="bg-[#0c0d17]"
+          onSend={handleSend}
+          placeholder="Scrivi un messaggio..."
+        />
       </div>
     </div>
   );
