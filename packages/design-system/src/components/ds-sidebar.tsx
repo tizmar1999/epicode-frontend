@@ -71,7 +71,7 @@ export function DsSidebar({
   onSelectLesson,
 }: DsSidebarProps) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col" role="tree">
       {modules.map((mod) => (
         <div className="mt-2" key={mod.id}>
           <DsTreeItem icon={mod.icon ?? "cube"} label={mod.title} level={0}>

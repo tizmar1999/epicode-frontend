@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 
 import DsChatBubble from "@workspace/design-system/components/ds-chat-bubble";
 import DsChatInput from "@workspace/design-system/components/ds-chat-input";
+import { useI18n } from "@/lib/i18n";
 
 interface ChatPanelProps {
   onClose?: () => void;
@@ -14,6 +15,7 @@ type ChatMessage = {
 };
 
 export function ChatPanel({ onClose }: ChatPanelProps) {
+  const { t } = useI18n();
   const initialMessages = useMemo<ChatMessage[]>(
     () => [
       {
@@ -45,10 +47,10 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
   }
 
   return (
-    <div className="flex h-full flex-col bg-[#0c0d17]">
-      <div className="flex items-center gap-2 border-b border-[#1b1e2d] px-4 py-4">
+    <div className="flex h-full flex-col bg-[var(--color-background-secondary)] transition-colors">
+      <div className="flex items-center gap-2 border-b border-[var(--color-border)] px-4 py-4">
         <i className="fas fa-robot text-[#c03ad8] text-sm" />
-        <div className="font-semibold text-sm">AI Tutor</div>
+        <div className="font-semibold text-sm">{t("aiTutor")}</div>
         <button
           className="ml-auto text-[#c03ad8]"
           onClick={onClose}
@@ -66,9 +68,9 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
         ))}
       </div>
 
-      <div className="border-t border-[#1b1e2d] px-4 py-4">
+      <div className="border-t border-[var(--color-border)] px-4 py-4">
         <DsChatInput
-          className="bg-[#0c0d17]"
+          className="bg-[var(--color-background-secondary)]"
           onSend={handleSend}
           placeholder="Scrivi un messaggio..."
         />

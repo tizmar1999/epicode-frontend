@@ -10,6 +10,9 @@ const meta: Meta<typeof DsTreeItem> = {
     label: "Module 1",
     isActive: false,
   },
+  parameters: {
+    chromatic: { viewports: [360, 1024] },
+  },
 };
 
 export default meta;

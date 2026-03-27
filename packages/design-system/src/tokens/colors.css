@@ -1,4 +1,19 @@
 :root {
+  /* light */
+  --color-background: #f7f8fc;
+  --color-background-secondary: #ffffff;
+  --color-muted: #eef1f8;
+
+  --color-foreground: #1b1e2b;
+  --color-foreground-muted: #4c5368;
+
+  --color-border: #d7dbe7;
+
+  --color-primary: #8b2dff;
+  --color-active: #e9ddff;
+}
+
+.dark {
   --color-background: #0b0c15;
   --color-background-secondary: #0c0d17;
   --color-muted: #121421;

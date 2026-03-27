@@ -32,26 +32,80 @@ export function DsTreeItem({
     onClick?.();
   }
 
+  function handleKeyDown(event: React.KeyboardEvent<HTMLButtonElement>) {
+    if (event.key === "ArrowRight" && hasChildren) {
+      setIsOpen(true);
+      event.preventDefault();
+    } else if (event.key === "ArrowLeft" && hasChildren) {
+      setIsOpen(false);
+      event.preventDefault();
+    } else if (event.key === "Home") {
+      const first = document.querySelector<HTMLButtonElement>(
+        "button[role='treeitem']"
+      );
+      first?.focus();
+      event.preventDefault();
+    } else if (event.key === "End") {
+      const items = document.querySelectorAll<HTMLButtonElement>(
+        "button[role='treeitem']"
+      );
+      items[items.length - 1]?.focus();
+      event.preventDefault();
+    } else if (event.key === "ArrowDown") {
+      const items = Array.from(
+        document.querySelectorAll<HTMLButtonElement>("button[role='treeitem']")
+      );
+      const idx = items.indexOf(event.currentTarget);
+      const next = items[idx + 1];
+      if (next) {
+        next.focus();
+        event.preventDefault();
+      }
+    } else if (event.key === "ArrowUp") {
+      const items = Array.from(
+        document.querySelectorAll<HTMLButtonElement>("button[role='treeitem']")
+      );
+      const idx = items.indexOf(event.currentTarget);
+      const prev = items[idx - 1];
+      if (prev) {
+        prev.focus();
+        event.preventDefault();
+      }
+    } else if (event.key === "Enter" || event.key === " ") {
+      handleClick();
+      event.preventDefault();
+    }
+  }
+
   return (
     <div className="mb-1">
       <button
         className={cn(
-          "flex w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
+          "flex w-full cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]",
           isActive
-            ? "bg-[#3a2a59] text-[#d8dbe6]"
-            : "text-[#9aa0b4] hover:bg-[#1a1d2b]"
+            ? "bg-[var(--color-active)] text-[var(--color-foreground)]"
+            : "text-[var(--color-foreground-muted)] hover:bg-[var(--color-muted)]"
         )}
         onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        aria-expanded={hasChildren ? isOpen : undefined}
+        aria-selected={isActive}
+        aria-level={level + 1}
+        role="treeitem"
         style={{ paddingLeft: `${level * 12}px` }}
         type="button"
       >
-        <i className={`fas fa-${icon} text-[#9aa0b4] text-[11px]`} />
-        <span className="truncate text-left text-[#d8dbe6]">{label}</span>
+        <i
+          className={`fas fa-${icon} text-[var(--color-foreground-muted)] text-[11px]`}
+        />
+        <span className="truncate text-left text-[var(--color-foreground)]">
+          {label}
+        </span>
         {rightSlot && <div className="mr-2 ml-auto text-xs">{rightSlot}</div>}
         {hasChildren && (
           <i
             className={cn(
-              "fas ml-auto text-[#5c5f73] text-[10px] transition-transform",
+              "fas ml-auto text-[var(--color-foreground-muted)] text-[10px] transition-transform",
               isOpen ? "fa-chevron-down" : "fa-chevron-right"
             )}
           />
@@ -59,7 +113,9 @@ export function DsTreeItem({
       </button>
 
       {hasChildren && isOpen && (
-        <div className="ml-2 border-[#242739] border-l pl-2">{children}</div>
+        <div className="ml-2 border-l border-[var(--color-border)] pl-2 transition-all">
+          {children}
+        </div>
       )}
     </div>
   );

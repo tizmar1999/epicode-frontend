@@ -34,6 +34,9 @@ const sampleModules = [
 const meta: Meta<typeof DsSidebar> = {
   title: "Design System/Navigation/DsSidebar",
   component: DsSidebar,
+  parameters: {
+    chromatic: { viewports: [360, 1024] },
+  },
 };
 
 export default meta;

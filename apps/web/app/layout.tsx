@@ -23,7 +23,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} bg-[#0b0c15] font-sans text-white antialiased`}
+        className={`${inter.variable} bg-[var(--color-background)] text-[var(--color-foreground)] font-sans antialiased`}
       >
         <Providers>{children}</Providers>
       </body>
