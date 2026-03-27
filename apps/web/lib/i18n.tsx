@@ -1,18 +1,10 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 type Locale = "en" | "it";
 
-type Messages = Record<string, string>;
-
-const translations: Record<Locale, Messages> = {
+const translations = {
   en: {
     searchPlaceholder: "Search in course",
     theme: "Theme",
@@ -31,12 +23,15 @@ const translations: Record<Locale, Messages> = {
     aiTutor: "Tutor AI",
     language: "Lingua",
   },
-};
+} as const;
+
+type MessageKey = keyof typeof translations.en;
+type Messages = Record<MessageKey, string>;
 
 type I18nContextValue = {
   locale: Locale;
   setLocale: (loc: Locale) => void;
-  t: (key: keyof typeof translations.en) => string;
+  t: (key: MessageKey) => string;
 };
 
 const I18nContext = createContext<I18nContextValue | undefined>(undefined);
@@ -56,14 +51,15 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.lang = locale;
   }, [locale]);
 
-  const value = useMemo<I18nContextValue>(
-    () => ({
+  const value = useMemo<I18nContextValue>(() => {
+    const current: Messages =
+      translations[locale] ?? (translations.en as Messages);
+    return {
       locale,
       setLocale,
-      t: (key) => translations[locale][key] ?? translations.en[key],
-    }),
-    [locale]
-  );
+      t: (key) => current[key] ?? translations.en[key],
+    };
+  }, [locale]);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }

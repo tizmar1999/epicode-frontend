@@ -21,7 +21,7 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
       {
         id: "m-1",
         role: "assistant",
-        text: "Ciao! Posso aiutarti a ripassare la lezione \"Dati 1\" o vuoi un breve riassunto?",
+        text: 'Ciao! Posso aiutarti a ripassare la lezione "Dati 1" o vuoi un breve riassunto?',
       },
       {
         id: "m-2",

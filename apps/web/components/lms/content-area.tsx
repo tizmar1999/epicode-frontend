@@ -8,9 +8,7 @@ export function ContentArea({ lesson }: ContentAreaProps) {
   return (
     <main className="flex flex-col bg-[var(--color-background)] text-[var(--color-foreground)] transition-colors">
       <div className="px-4 pt-4 sm:px-10">
-        <h1 className="font-semibold text-2xl">
-          {lesson?.title ?? "Dati 1"}
-        </h1>
+        <h1 className="font-semibold text-2xl">{lesson?.title ?? "Dati 1"}</h1>
       </div>
 
       <div className="px-4 pt-6 pb-8 sm:px-10">
