@@ -30,8 +30,7 @@ pnpm turbo run dev   # starts all dev targets (web + storybook if configured)
 - **Tooling:** Biome for formatting, Vitest for tests, Husky + lint-staged to run format check + DS tests on commit (passes with no tests).
 
 ## Screenshots
-Add latest UI captures to `docs/screenshots/` and reference them here, e.g.:
-`![LMS UI](docs/screenshots/lms-home.png)`
+![alt text](final-ui.png)
 
 ## Notes
 - Type stripping warnings from Next 16 are expected (experimental notice).
