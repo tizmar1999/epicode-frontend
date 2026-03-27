@@ -24,7 +24,7 @@ export function DsChatBubble({ variant, children }: DsChatBubbleProps) {
       <div
         className={cn(
           "max-w-[70%] rounded-xl px-4 py-2.5 text-sm",
-          isUser ? "bg-primary text-white" : "bg-muted text-foreground",
+          isUser ? "bg-primary text-white" : "bg-muted text-foreground"
         )}
       >
         {children}

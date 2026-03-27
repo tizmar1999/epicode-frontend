@@ -11,7 +11,7 @@ export default function Page() {
   const [leftOpen, setLeftOpen] = useState(true);
   const [rightOpen, setRightOpen] = useState(true);
   const [selectedLessonId, setSelectedLessonId] = useState<string | null>(
-    "l-5",
+    "l-5"
   );
   const selectedLesson = mockCourse.modules
     .flatMap((m) => m.sections)

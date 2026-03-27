@@ -32,7 +32,7 @@ describe("DsTreeItem", () => {
     render(
       <DsTreeItem label="Parent">
         <div>Child Item</div>
-      </DsTreeItem>,
+      </DsTreeItem>
     );
 
     expect(screen.getByText("Child Item")).toBeInTheDocument();

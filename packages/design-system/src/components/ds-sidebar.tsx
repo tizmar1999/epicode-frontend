@@ -1,40 +1,40 @@
 import { DsTreeItem } from "./ds-tree-item";
 
 /** Lesson node definition used by DsSidebar */
-export type DsSidebarLesson = {
+export interface DsSidebarLesson {
+  /** Optional leading icon */
+  icon?: string;
   /** Unique identifier for the lesson */
   id: string;
-  /** Lesson title */
-  title: string;
   /** Status indicator */
   status: "completed" | "in-progress" | "locked";
-  /** Optional leading icon */
-  icon?: string;
-};
+  /** Lesson title */
+  title: string;
+}
 
 /** Group of lessons within a section */
-export type DsSidebarLessonGroup = {
-  /** Unique identifier for the group */
-  id: string;
-  /** Group title (e.g., Video, Teoria) */
-  title: string;
-  /** Lessons contained in this group */
-  lessons: DsSidebarLesson[];
+export interface DsSidebarLessonGroup {
   /** Optional leading icon */
   icon?: string;
-};
+  /** Unique identifier for the group */
+  id: string;
+  /** Lessons contained in this group */
+  lessons: DsSidebarLesson[];
+  /** Group title (e.g., Video, Teoria) */
+  title: string;
+}
 
 /** Section inside a module containing lesson groups */
-export type DsSidebarSection = {
-  /** Unique identifier for the section */
-  id: string;
-  /** Section title */
-  title: string;
+export interface DsSidebarSection {
   /** Groups within the section */
   groups: DsSidebarLessonGroup[];
   /** Optional leading icon */
   icon?: string;
-};
+  /** Unique identifier for the section */
+  id: string;
+  /** Section title */
+  title: string;
+}
 
 /** Module grouping sections */
 export interface DsSidebarModule {

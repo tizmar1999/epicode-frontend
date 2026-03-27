@@ -1,8 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-
-import { DsSidebar } from "./ds-sidebar";
 import type { DsSidebarModule } from "./ds-sidebar";
+import { DsSidebar } from "./ds-sidebar";
 
 const mockModules = [
   {
@@ -37,7 +36,7 @@ describe("DsSidebar", () => {
         modules={mockModules}
         onSelectLesson={() => {}}
         selectedLessonId={null}
-      />,
+      />
     );
 
     expect(screen.getByText("Module 1")).toBeInTheDocument();
@@ -49,7 +48,7 @@ describe("DsSidebar", () => {
         modules={mockModules}
         onSelectLesson={() => {}}
         selectedLessonId={null}
-      />,
+      />
     );
 
     expect(screen.getByText("Section 1")).toBeInTheDocument();
@@ -61,7 +60,7 @@ describe("DsSidebar", () => {
         modules={mockModules}
         onSelectLesson={() => {}}
         selectedLessonId={null}
-      />,
+      />
     );
 
     expect(screen.getByText("Video")).toBeInTheDocument();
@@ -73,7 +72,7 @@ describe("DsSidebar", () => {
         modules={mockModules}
         onSelectLesson={() => {}}
         selectedLessonId={null}
-      />,
+      />
     );
 
     expect(screen.getByText("Lesson 1")).toBeInTheDocument();
@@ -87,7 +86,7 @@ describe("DsSidebar", () => {
         modules={mockModules}
         onSelectLesson={handleSelect}
         selectedLessonId={null}
-      />,
+      />
     );
 
     fireEvent.click(screen.getByText("Lesson 1"));

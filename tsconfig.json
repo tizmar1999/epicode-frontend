@@ -4,7 +4,7 @@
     "strictNullChecks": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
-  "paths": {
+    "paths": {
       "@/*": ["apps/web/*"],
       "@/components/*": ["apps/web/components/*"],
       "@/lib/*": ["apps/web/lib/*"]

@@ -20,7 +20,7 @@ const dsBadgeVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  },
+  }
 );
 
 /**

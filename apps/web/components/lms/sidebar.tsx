@@ -42,7 +42,7 @@ export function Sidebar({
                     "overflow-hidden transition-all duration-300",
                     openItems[mod.id]
                       ? "max-h-[800px] opacity-100"
-                      : "max-h-0 opacity-0",
+                      : "max-h-0 opacity-0"
                   )}
                 >
                   {mod.sections.map((section) => (
@@ -57,7 +57,7 @@ export function Sidebar({
                           "overflow-hidden transition-all duration-300",
                           openItems[section.id]
                             ? "max-h-[800px] opacity-100"
-                            : "max-h-0 opacity-0",
+                            : "max-h-0 opacity-0"
                         )}
                       >
                         {section.groups?.map((group) => (
@@ -72,7 +72,7 @@ export function Sidebar({
                                 "overflow-hidden transition-all duration-300",
                                 openItems[group.id]
                                   ? "max-h-[800px] opacity-100"
-                                  : "max-h-0 opacity-0",
+                                  : "max-h-0 opacity-0"
                               )}
                             >
                               {group.lessons.map((lesson) => (

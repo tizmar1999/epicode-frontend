@@ -22,7 +22,7 @@ describe("DsInput", () => {
         error
         errorMessage="This field is required"
         helperText="Helper"
-      />,
+      />
     );
 
     expect(screen.getByText("This field is required")).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe("DsInput", () => {
 
   it("prioritizes error message over helper text", () => {
     render(
-      <DsInput error errorMessage="Error message" helperText="Helper text" />,
+      <DsInput error errorMessage="Error message" helperText="Helper text" />
     );
 
     expect(screen.getByText("Error message")).toBeInTheDocument();
