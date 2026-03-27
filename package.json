@@ -28,7 +28,7 @@
   "lint-staged": {
     "*.{ts,tsx,css,md,json}": [
       "pnpm format:check",
-      "pnpm --filter @workspace/design-system test -- --runInBand"
+      "pnpm --filter @workspace/design-system test"
     ]
   },
   "packageManager": "pnpm@10.4.1",
