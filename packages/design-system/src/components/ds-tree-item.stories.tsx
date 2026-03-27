@@ -35,7 +35,7 @@ export const WithChildren: Story = {
       <div className="w-64">
         <DsTreeItem
           {...args}
-          isOpen={open}
+          defaultOpen={open}
           onClick={() => setOpen((prev) => !prev)}
           label="Section 1"
         >

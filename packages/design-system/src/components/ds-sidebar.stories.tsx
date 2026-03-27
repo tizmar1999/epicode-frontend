@@ -16,14 +16,32 @@ const sampleModules = [
             id: "g1",
             title: "Video",
             lessons: [
-              { id: "l1", title: "Introduzione", status: "completed" },
-              { id: "l2", title: "Installazione", status: "in-progress" },
+              {
+                id: "l1",
+                title: "Introduzione",
+                status: "completed" as const,
+                type: "video",
+              },
+              {
+                id: "l2",
+                title: "Installazione",
+                status: "in-progress" as const,
+                type: "video",
+              },
             ],
           },
           {
             id: "g2",
             title: "Teoria",
-            lessons: [{ id: "l3", title: "Concetti base", status: "locked" }],
+            lessons: [
+              {
+                id: "l3",
+                title: "Concetti base",
+                status: "locked" as const,
+                type: "article",
+                icon: "file",
+              },
+            ],
           },
         ],
       },

@@ -57,10 +57,14 @@ describe("DsTreeItem", () => {
     const [parent] = screen.getAllByRole("treeitem");
     expect(parent).toHaveAttribute("aria-expanded", "true");
 
-    fireEvent.keyDown(parent, { key: "ArrowLeft" });
-    expect(parent).toHaveAttribute("aria-expanded", "false");
+    if (parent) {
+      fireEvent.keyDown(parent, { key: "ArrowLeft" });
+      expect(parent).toHaveAttribute("aria-expanded", "false");
+    }
 
-    fireEvent.keyDown(parent, { key: "ArrowRight" });
-    expect(parent).toHaveAttribute("aria-expanded", "true");
+    if (parent) {
+      fireEvent.keyDown(parent, { key: "ArrowRight" });
+      expect(parent).toHaveAttribute("aria-expanded", "true");
+    }
   });
 });
