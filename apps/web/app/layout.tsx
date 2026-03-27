@@ -15,10 +15,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        rel="stylesheet"
-      />
+      <head>
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          rel="stylesheet"
+          precedence="default"
+        />
+      </head>
       <body
         className={`${inter.variable} bg-[#0b0c15] font-sans text-white antialiased`}
       >
